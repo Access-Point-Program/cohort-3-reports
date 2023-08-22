@@ -17,26 +17,17 @@ public class Controller {
         this.service = service;
     }
 
-    //Mapped depending on the data requested
-    @GetMapping("/factoryrulesets")
-    public Data getRuleSetData(){// no need for params.
-        return service.getRuleSets(9, "ruleSet");
-    }
-
-    @GetMapping("/factoryrulesets/filter")
-    public Data getRuleSetFilterData(@RequestParam(value = "filter1", defaultValue = "null") String filter1, @RequestParam(value = "filter2", defaultValue = "0") Integer filter2){// no need for params.
-        return service.getRuleSets(filter2, filter1);
-    }
-
-    @GetMapping("/factorylayoutnames")
-    public Data getLayoutData(@RequestParam String layout){
-        return service.getLayout(layout);
-    }
-
-    @GetMapping("/factorylayoutnames/filter")
-    public Data getLayoutFilterData(@RequestParam(value = "filter1", defaultValue = "null") String filter1, @RequestParam(value = "filter2", defaultValue = "0") Integer filter2){// no need for params.
-        return service.getRuleSets(filter2, filter1);
-    }
-
+       //return all the data
+       @GetMapping("/")
+       public Data getData(){
+           return service.getAllData();
+       }
+   
+       
+       //return data based on defined ruleset and/or layout
+       @GetMapping("/filter")
+       public Data getRuleSetData(@RequestParam(value = "filter1", defaultValue = "null") String filter1, @RequestParam(value = "filter2", defaultValue = "null") String filter2){// no need for params.
+           return service.getRuleSets(filter1, filter2);
+       }
 
 }

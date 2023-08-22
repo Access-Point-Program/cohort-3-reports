@@ -8,11 +8,12 @@ import com.example.demo.api.model.Data;
 public class UserService {
 
 
-    public Data getRuleSets(int id, String name){
+    public Data getRuleSets(String id, String name){
+        //make a switch to decide which param is given?
         return new Data(id, name);
     }
 
-    public Data getLayout(String layout){
-        return new Data(0, layout);
+    public Data getAllData(){
+        return new Data("0", null);
     }
 }
