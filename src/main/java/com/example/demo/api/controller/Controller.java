@@ -18,16 +18,16 @@ public class Controller {
     }
 
        //return all the data
-       @GetMapping("/")
-       public Data getData(){
-           return service.getAllData();
-       }
+    @GetMapping("/")
+    public Data getData(){
+        return service.getAllData();
+    }
    
        
-       //return data based on defined ruleset and/or layout
-       @GetMapping("/filter")
-       public Data getRuleSetData(@RequestParam(value = "filter1", defaultValue = "null") String filter1, @RequestParam(value = "filter2", defaultValue = "null") String filter2){
-           return service.getRuleSets(filter1, filter2);
-       }
+    //return data based on defined ruleset and/or layout
+    @GetMapping("/filter")
+    public Data getRuleSetData(@RequestParam(value = "filter1", defaultValue = "null") String filter1, @RequestParam(value = "filter2", defaultValue = "null") String filter2){
+        return service.getRuleSets(filter1, filter2);
+    }
 
 }
