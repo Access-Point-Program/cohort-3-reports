@@ -11,13 +11,4 @@ public class DemoApplication {
     public static void main(String[] args) {
       SpringApplication.run(DemoApplication.class, args);
     }
-  //   @GetMapping("/hello")
-  //   public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-  //     return String.format("Hello %s!", name);
-  //   }
-
-	// @GetMapping("/trial")
-  //   public String trial(@RequestParam(value = "try", defaultValue = "Check") String well) {
-  //     return String.format("Hello %s!", well);
-  //   }
 }

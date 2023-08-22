@@ -7,5 +7,7 @@
 # In-Progress
 * Full integretion with Postgres, and deciding how to structure it.
 
+
 # Not yet started
 * Need to start learning about Docker, Jenkins, TypeScript, And Angular soon
+
