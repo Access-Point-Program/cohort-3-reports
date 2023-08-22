@@ -6,9 +6,13 @@ import com.example.demo.api.model.Data;
 
 @Service
 public class UserService {
-    
 
-    public Data getId(int id){
-        return new Data(id, "null");
+
+    public Data getRuleSets(int id, String name){
+        return new Data(id, name);
+    }
+
+    public Data getLayout(String layout){
+        return new Data(0, layout);
     }
 }
