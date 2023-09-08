@@ -1,4 +1,5 @@
 package com.example.demo.api.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,23 +12,35 @@ import com.example.demo.api.service.UserService;
 public class Controller {
 
     private UserService service;
-    
+
     @Autowired
-    public Controller(UserService service){
+    public Controller(UserService service) {
         this.service = service;
     }
 
-       //return all the data
+    // return all the data
     @GetMapping("/")
-    public Data getData(){
+    public Data getData() {
         return service.getAllData();
     }
-   
-       
-    //return data based on defined ruleset and/or layout
+
+    // return data based on defined ruleset and/or layout
     @GetMapping("/filter")
-    public Data getRuleSetData(@RequestParam(value = "filter1", defaultValue = "null") String filter1, @RequestParam(value = "filter2", defaultValue = "null") String filter2){
-        return service.getRuleSets(filter1, filter2);
+    public Data getFilterData(@RequestParam(value = "filter1", defaultValue = "null") String filter1,
+            @RequestParam(value = "filter2", defaultValue = "null") String filter2) {
+        return service.getFilteredData(filter1, filter2);
+    }
+
+    // get all the rulesets
+    @GetMapping("/rulesets")
+    public Data getRuleset() {
+        return service.getRuleSets();
+    }
+
+    //get all the layouts
+    @GetMapping("/layout")
+    public Data getLayout() {
+        return service.getLayouts();
     }
 
 }
