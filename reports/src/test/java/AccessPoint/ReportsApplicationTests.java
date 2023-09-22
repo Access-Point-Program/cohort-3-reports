@@ -1,14 +1,10 @@
-package com.example.demo;
+package AccessPoint;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-import org.hamcrest.Matchers.*;
-
-
 @SpringBootTest
-class DemoApplicationTests {
+class ReportsApplicationTests {
 
 	@Test
 	void contextLoads() {
