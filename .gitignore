@@ -41,7 +41,7 @@ build/
 
 # Node
 /node_modules
-/node/node_modules
+/node
 npm-debug.log
 yarn-error.log
 
