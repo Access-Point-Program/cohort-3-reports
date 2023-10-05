@@ -1,10 +1,10 @@
-package com.accesspoint.simulation;
+package API.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SimulationApplicationTests {
+class ApiApplicationTests {
 
 	@Test
 	void contextLoads() {
