@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.UUID;
 
 @SpringBootApplication
-@Controller
 public class ApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);

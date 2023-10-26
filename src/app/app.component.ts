@@ -24,7 +24,5 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'Demo';
   data = {}  as any;
-  constructor(private http: HttpClient) {
-    http.get('resource').subscribe(data => this.data = data);
-  }
+  
 }

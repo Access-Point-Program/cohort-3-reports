@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/index.css" />
+  <title>Capstone Site</title>
+</head>
+<body>
+<div class="SideBar">
+  <div class="app">
+    <img src="/assets/media/AppLogo.svg" alt="AppLogo" class="logos" />
+    <span>Super Cool Name</span>
+  </div>
+  <hr class="line" />
+
+  <div class="options">
+    <div class="option" [id]="active === 'dashboard'? 'active': ''" (click)="changeActive('dashboard')">
+      <img src="/assets/media/DashBoardLogo.svg" alt="DashBoardLogo" class="logos" />
+      <span class="normal">Dashboard</span>
+    </div>
+    <div class="option" [id]="active === 'reports'? 'active': ''"  (click)="changeActive('reports')">
+      <img src="/assets/media/ReportsLogo.svg" alt="ReportsLogo" class="logos" />
+      <span class="normal">Reports</span>
+    </div>
+    <div class="option" [id]="active === 'simulation'? 'active': ''"  (click)="changeActive('simulation')">
+      <img src="/assets/media/SimulaitonLogo.svg" alt="SimulaitonLogo" class="logos" />
+      <span class="normal">Simulation</span>
+    </div>
+  </div>
+
+  <div class="footer" (click)="signOut()">
+    <hr class="line" />
+    <span>Sign Out</span>
+  </div>
+</div>
+</body>
+</html>
