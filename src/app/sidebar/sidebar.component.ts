@@ -7,7 +7,7 @@ import { Component, Output } from '@angular/core';
 })
 export class SidebarComponent {
 
-  @Output() active: string = 'dashboard';
+  @Output() active: string = 'reports';
 
   
   changeActive(a: string): void {
