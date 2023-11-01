@@ -1,0 +1,38 @@
+<div class="shadow">
+<div class="won">
+  <h6>Filters</h6>
+  <hr />
+
+
+  <div>
+    <div>
+
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+          {{rulesetselection || "Layout Filter"}}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button (click)="selection(pow)" ngbDropdownItem *ngFor="let pow of powers" [value]="pow">{{pow}}</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div >
+    <div >
+
+      <div ngbDropdown class="d-inline-block ">
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+          {{rulesetselection || "Ruleset Filter"}}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button (click)="selection(pow)" ngbDropdownItem *ngFor="let pow of ruleset" [value]="pow">{{pow}}</button>
+
+        </div>
+      </div>
+    </div>
+  </div >
+  </div>
+</div>
