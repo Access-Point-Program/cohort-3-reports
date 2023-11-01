@@ -18,7 +18,6 @@ export class MenuFormComponent {
   model = new Menu(18, 'Dr. IQ', this.powers[0], 'Chuck Overstreet');
 
   submitted = false;
-
   onSubmit() { this.submitted = true; }
 
    selection(one:string){this.rulesetselection= one} 
