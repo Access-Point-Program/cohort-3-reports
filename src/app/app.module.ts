@@ -7,11 +7,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ResultsTableComponent } from './results-table/results-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    ResultsTableComponent
   ],
   imports: [
     BrowserModule,
