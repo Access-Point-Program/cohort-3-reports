@@ -1,0 +1,37 @@
+<div class="col-md-8 offset-md-3  shadow p-4 bg-body-tertiary rounded" style="width:736px; height:859px" > 
+	<p class="text-muted">Simulation Analytics</p>
+	<hr class="text-muted">
+	<div style="width:640px; height:200px"></div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Layout</th>
+				<th scope="col">Ruleset</th>
+				<th scope="col">Iterations</th>
+				<th scope="col">Completed</th>
+				<th scope="col">Passed</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let result of RESULTS">
+				<th scope="row">{{ result.id }}</th>
+				<td>{{ result.name }}</td>
+				<td>{{ result.area | number}}</td>
+				<td>{{ result.population | number }}</td>
+				<td *ngIf = "result.success"><img src="./assets/media/checkbox.svg/"></td>
+				<td *ngIf = "!result.success"><img src="./assets/media/xbox.svg/"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="d-flex justify-content-between p-2">
+		<ngb-pagination
+			[collectionSize]="collectionSize"
+			[(page)]="page"
+			[pageSize]="10"
+			(pageChange)="refreshResults()"
+		>
+		</ngb-pagination>
+	</div>
+</div>

@@ -7,15 +7,21 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { TableComponent } from './tables/tables.component';
+import {NgbPaginationModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    NgbPaginationModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
