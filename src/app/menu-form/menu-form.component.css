@@ -1,4 +1,4 @@
-.btn {
+/* .btn {
     color: grey;
     border-color: gray;
     width: 14em;
@@ -17,6 +17,7 @@ h6{
     font-weight: 400;
    
 }
+
 hr{
     width:13.8em;  
     border: solid 1px;  
@@ -24,6 +25,10 @@ hr{
     display: flex;
     align-self: center;
 }
+ */
+
+
+
 /* .shadow{
     display: flex;
     border-radius: 8px;
@@ -35,10 +40,12 @@ hr{
     flex-direction: column;
     align-items: center;
 
-} */
+}  */
 
 
-.won{
+
+
+/* .won{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -53,10 +60,18 @@ hr{
     flex-direction: column;
     align-items: center;
 
-}
-.row{
+} */
+/* .row{
  width: min-content;
 }
 .col{
 width: min-content;
 }
+
+
+.row{
+ width: min-content;
+}
+.col{
+width: min-content;
+} */
