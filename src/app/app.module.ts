@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ResultsTableComponent } from './results-table/results-table.component';
 import { TableComponent } from './tables/tables.component';
 import {NgbPaginationModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,6 +15,7 @@ import {NgbPaginationModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     SidebarComponent,
+    ResultsTableComponent,
     TableComponent,
   ],
   imports: [
