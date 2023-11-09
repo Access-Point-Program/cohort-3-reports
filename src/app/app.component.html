@@ -1,11 +1,2 @@
-<h1>Now Viewing: {{chartType}}</h1>
-<button (click)="changeChart()">Change</button>
-
-
-<div class="angularChart" *ngIf="chartType != 'chartJs'">
-  <app-angular-charts/>
-</div>
-
-<div class="chartJs" *ngIf="chartType == 'chartJs'">
-  <app-chart-js/>
-</div>
+<app-sidebar></app-sidebar>
+<app-carousel></app-carousel>
