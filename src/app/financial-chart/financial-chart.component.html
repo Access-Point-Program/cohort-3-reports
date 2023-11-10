@@ -1,8 +1,12 @@
-<canvas
-  class="chart"
-  baseChart
-  [data]="financialChartData"
-  [options]="financialChartOptions"
-  [type]="'candlestick'"
->
-</canvas>
+<div class="d-flex">
+  <canvas
+    class="chart"
+    baseChart
+    [data]="financialChartData"
+    [options]="financialChartOptions"
+    [type]="financialChartType"
+    width="700px"
+    height="300px"
+  >
+  </canvas>
+</div>
