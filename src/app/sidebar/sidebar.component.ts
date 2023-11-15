@@ -1,21 +1,14 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+  active: string = 'r';
 
-  @Output() active: string = 'dashboard';
-
-  
-  changeActive(a: string): void {
-    this.active = a;
+  change(s:string){
+    this.active = s;
   }
-
-  signOut() {
-    //signout  
-  }
-
 }
