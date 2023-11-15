@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "mock:rulesets": "mocker ./mocker-app/api.js --host localhost --port 9010"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.3.2",
     "rxjs": "~7.8.0",
+    "service": "^0.1.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
@@ -37,6 +39,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "mocker-api": "^2.9.8",
     "typescript": "~5.1.3"
   }
 }
