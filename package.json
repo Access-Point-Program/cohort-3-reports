@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "mock:layouts": "mocker ./mocker/api.js --host localhost --port 9010",
     "test": "ng test"
   },
   "private": true,
@@ -34,6 +35,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "mocker-api": "^2.9.8",
     "typescript": "~5.1.3"
   }
 }
