@@ -6,7 +6,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import reactor.core.publisher.Flux;
+
+
+import java.util.List;
+
 
 @Service
 
@@ -19,28 +22,43 @@ public class SimulationResultService {
 
 
   // Return a list of Simulation results That is of all the Results in the database
-  Flux<SimulationResult> mountain() {
-   
+  List<SimulationResult> getAll() {
 
-    Flux<SimulationResult> results = webClient.get()
+
+    List<SimulationResult> results = webClient.get()
         .uri(this.url)
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
-        ;
+      .toStream().toList();
 
 
     return results;
   }
-  Flux<SimulationResult> returningFunction(Integer ruleset, Integer layout) {
-      Flux<SimulationResult> results = webClient.get()
+  List<SimulationResult> getByRulesetAndLayout(Integer ruleset, Integer layout) {
+      List<SimulationResult> results = webClient.get()
         .uri(this.url)
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
-        ;
+        .toStream().filter((bottle)-> (bottle.getRuleset_id() == ruleset && bottle.getLayout_id() == layout)).toList();
+      return results;
 
-        // this is where we ended
-    for(result: results){
-    }
-      
+  }
+  List<SimulationResult> getByRuleset(Integer ruleset) {
+    List<SimulationResult> results = webClient.get()
+      .uri(this.url)
+      .retrieve()
+      .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
+      .toStream().filter((bottle)-> (bottle.getRuleset_id() == ruleset)).toList();
+    return results;
+
+  }
+  List<SimulationResult> getByLayout(Integer layout) {
+    List<SimulationResult> results = webClient.get()
+      .uri(this.url)
+      .retrieve()
+      .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
+      .toStream().filter((bottle)-> (bottle.getLayout_id() == layout)).toList();
+    return results;
+
   }
 }

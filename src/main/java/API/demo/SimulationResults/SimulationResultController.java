@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api")
@@ -18,15 +20,14 @@ public class SimulationResultController {
   private final SimulationResultService simulationResultService;
 
   @GetMapping("/simulations")
-  ResponseEntity<Flux<SimulationResult>> getData(@RequestParam(required = false)Integer ruleset,@RequestParam(required = false)Integer layout) {
-    Flux<SimulationResult> output;
+  ResponseEntity<List<SimulationResult>> getData(@RequestParam(required = false)Integer ruleset, @RequestParam(required = false)Integer layout) {
     if(ruleset != null && layout != null){
-      return null;
+      return ResponseEntity.ok(simulationResultService.getByRulesetAndLayout(ruleset, layout));
     } else if (layout != null) {
-      return null;
+      return ResponseEntity.ok(simulationResultService.getByLayout(layout));
     } else if (ruleset != null) {
-      return null;
+      return ResponseEntity.ok(simulationResultService.getByRuleset(ruleset));
     }
-    return ResponseEntity.ok().body(output);
+    return ResponseEntity.ok(simulationResultService.getAll());
   }
 }
