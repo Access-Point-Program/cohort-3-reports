@@ -15,12 +15,12 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let result of RESULTS">
-				<th scope="row">{{ result.id }}</th>
-				<td>{{ result.name }}</td>
-				<td>{{ result.area | number}}</td>
-				<td>{{ result.population | number }}</td>
-				<td *ngIf = "result.success"><img src="./assets/media/checkbox.svg/"></td>
-				<td *ngIf = "!result.success"><img src="./assets/media/xbox.svg/"></td>
+				<th scope="row">{{ result.layout }}</th>
+				<td>{{ result.ruleset }}</td>
+				<td>{{ result.iterations_used| number}}</td>
+				<td>{{ result.creation_date | number }}</td>
+				<td *ngIf = "result.successful"><img src="./assets/media/checkbox.svg/"></td>
+				<td *ngIf = "!result.successful"><img src="./assets/media/xbox.svg/"></td>
 			</tr>
 		</tbody>
 	</table>
