@@ -1,21 +1,46 @@
 package API.demo.SimulationResults;
 
-import java.util.List;
+
+
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import reactor.core.publisher.Flux;
 
 @Service
 
 public class SimulationResultService {
 
-  private final RestTemplate externalServer = new RestTemplate();
-  private final String url = "http://localhost:9010/rulesets";
+
+
+  private final WebClient webClient = WebClient.create();
+  private final String url = "http://localhost:9010/results";
 
 
   // Return a list of Simulation results That is of all the Results in the database
-  List<SimulationResult> mountain() {
-    List<SimulationResult> output = externalServer.getForObject(url, List.class);
+  Flux<SimulationResult> mountain() {
+   
 
-    return output;
+    Flux<SimulationResult> results = webClient.get()
+        .uri(this.url)
+        .retrieve()
+        .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
+        ;
+
+
+    return results;
+  }
+  Flux<SimulationResult> returningFunction(Integer ruleset, Integer layout) {
+      Flux<SimulationResult> results = webClient.get()
+        .uri(this.url)
+        .retrieve()
+        .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
+        ;
+
+        // this is where we ended
+    for(result: results){
+    }
+      
   }
 }

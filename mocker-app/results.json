@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "layout": "layout_1",
+        "ruleset": "ruleset_1",
+        "iterations_used": 10,
+        "iterations_max": 100,
+        "successful": true,
+        "creation_date": 1673174400
+      },
+      {
+        "id": 2,
+        "layout": "layout_2",
+        "ruleset": "ruleset_2",
+        "iterations_used": 20,
+        "iterations_max": 200,
+        "successful": false,
+        "creation_date": 1673174500
+      },
+      {
+        "id": 3,
+        "layout": "layout_3",
+        "ruleset": "ruleset_3",
+        "iterations_used": 30,
+        "iterations_max": 300,
+        "successful": true,
+        "creation_date": 1673174600
+      },
+    {
+        "id": 4,
+        "layout": "layout_4",
+        "ruleset": "ruleset_4",
+        "iterations_used": 40,
+        "iterations_max": 400,
+        "successful": false,
+        "creation_date": 1673174700
+      },
+      {
+        "id": 5,
+        "layout": "layout_5",
+        "ruleset": "ruleset_5",
+        "iterations_used": 50,
+        "iterations_max": 500,
+        "successful": true,
+        "creation_date": 1673174800
+      },
+      {
+        "id": 6,
+        "layout": "layout_6",
+        "ruleset": "ruleset_6",
+        "iterations_used": 60,
+        "iterations_max": 600,
+        "successful": false,
+        "creation_date": 1673174900
+      },
+    {
+        "id": 7,
+        "layout": "layout_7",
+        "ruleset": "ruleset_7",
+        "iterations_used": 70,
+        "iterations_max": 700,
+        "successful": true,
+        "creation_date": 1673175000
+      },
+      {
+        "id": 8,
+        "layout": "layout_8",
+        "ruleset": "ruleset_8",
+        "iterations_used": 80,
+        "iterations_max": 800,
+        "successful": false,
+        "creation_date": 1673175100
+      },
+      {
+        "id": 9,
+        "layout": "layout_9",
+        "ruleset": "ruleset_9",
+        "iterations_used": 90,
+        "iterations_max": 900,
+        "successful": true,
+        "creation_date": 1673175200
+      },
+      {
+        "id": 10,
+        "layout": "layout_10",
+        "ruleset": "ruleset_10",
+        "iterations_used": 100,
+        "iterations_max": 1000,
+        "successful": false,
+        "creation_date": 1673175300
+      } 
+]
