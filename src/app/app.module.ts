@@ -6,18 +6,26 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+
 import { SidebarComponent } from './sidebar/sidebar.component';
+import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MenuFormComponent } from './menu-form/menu-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    MenuFormComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//createa new config
+//4 components

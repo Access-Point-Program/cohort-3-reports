@@ -1,28 +1,26 @@
-// import { Component } from '@angular/core';
-// import {HttpClient} from '@angular/common/http';
 
-// @Component({
-  // selector: 'app-root',
-  // templateUrl: './app.component.html',
-  // styleUrls: ['./app.component.css']
-// })
-// export class AppComponent {
-  // title = 'User';
-  // data = {}  as any;
-  //constructor(private http: HttpClient) {
-    // http.get('resource').subscribe(data => this.data = data);
-  // }
-// }
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { DecimalPipe, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { LayoutService } from './layout.service';
+import { Layout } from './layout';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+	selector: 'app-component',
+	templateUrl: './app.component.html',
 })
-export class AppComponent {
-  title = 'Demo';
-  data = {}  as any;
-  
+export class AppComponent implements OnInit{
+	Layout: Layout[] = [];
+
+	
+	
+
+	constructor(private service:LayoutService) {
+		
+	}
+
+	ngOnInit(): void {
+		//this.service.getLayouts().subscribe((data)=>{this.Layout = data});
+		
+  }
 }
