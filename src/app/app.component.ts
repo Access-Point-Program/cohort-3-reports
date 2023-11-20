@@ -1,7 +1,10 @@
+
 import { Component } from '@angular/core';
 import { RulesetService } from './rulesets.service';
 import { DatePipe } from '@angular/common';
 import { Ruleset } from './Ruleset';
+import { LayoutService } from './layout.service';
+import { Layout } from './layout';
 
 
 @Component({
@@ -11,14 +14,14 @@ import { Ruleset } from './Ruleset';
   providers: [DatePipe]
 })
 export class AppComponent {
-  title?: string;
-
   rulesets: Ruleset[] = [];
-
-  constructor(private service: RulesetService, private datePipe: DatePipe){}
+	Layout: Layout[] = [];
+  
+  constructor(private rulesetService: RulesetService, private layoutService:LayoutService, private datePipe: DatePipe){}
 
   ngOnInit(){
     this.getRulesets();
+    //this.service.getLayouts().subscribe((data)=>{this.Layout = data});
   }
 
   getRulesets(){

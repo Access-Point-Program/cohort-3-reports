@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+
     "test": "ng test",
+    "mock:layouts": "mocker ./mocker/api.js --host localhost --port 9010",
     "mock:rulesets": "mocker ./mocker-app/api.js --host localhost --port 9010"
   },
   "private": true,
@@ -23,8 +25,9 @@
     "@popperjs/core": "^2.11.6",
     "angular-in-memory-web-api": "^0.16.0",
     "bootstrap": "^5.3.2",
+    "chart.js": "^4.4.0",
     "bootstrap-icons": "^1.11.1",
-    "chart.js": "^3.6.0",
+    "chart.js": "^4.4.0",
     "chartjs-chart-financial": "^0.1.1",
     "ng2-charts": "^5.0.3",
     "rxjs": "~7.8.0",
