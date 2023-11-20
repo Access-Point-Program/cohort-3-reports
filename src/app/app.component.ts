@@ -1,34 +1,39 @@
-// import { Component } from '@angular/core';
-// import {HttpClient} from '@angular/common/http';
-
-// @Component({
-// selector: 'app-root',
-// templateUrl: './app.component.html',
-// styleUrls: ['./app.component.css']
-// })
-// export class AppComponent {
-// title = 'User';
-// data = {}  as any;
-//constructor(private http: HttpClient) {
-// http.get('resource').subscribe(data => this.data = data);
-// }
-// }
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { RulesetService } from './rulesets.service';
+import { DatePipe } from '@angular/common';
+import { Ruleset } from './Ruleset';
+import { LayoutService } from './layout.service';
+import { Layout } from './layout';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [DatePipe]
 })
 export class AppComponent {
-  chartType: string = 'chartJs';
+  rulesets: Ruleset[] = [];
+	Layout: Layout[] = [];
+  
+  constructor(private rulesetService: RulesetService, private layoutService:LayoutService, private datePipe: DatePipe){}
 
-  changeChart() {
-    if (this.chartType == 'chartJs') {
-      this.chartType = 'Angular Charts';
-      return;
-    }
-    this.chartType = 'chartJs';
+  ngOnInit(){
+    this.getRulesets();
+    //this.service.getLayouts().subscribe((data)=>{this.Layout = data});
   }
+
+  getRulesets(){
+    return this.service.getRulesets()
+      .subscribe(data => this.rulesets = data);
+  }
+
+  //format from date to vielable date and time
+  // format(date: string): void{
+  //   this.layouts = data;
+  //   this.layouts.map(el =>
+  //     {
+  //       el.creation_date = this.datePipe.transform(el.creation_date, 'MM/dd/yyyy hh:mm a')
+  //     })
+  // }
 }

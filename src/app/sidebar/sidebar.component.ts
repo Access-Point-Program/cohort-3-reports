@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-    active: string = 'r';
+  active: string = 'r';
 
-    change(s:string){
-      this.active = s;
-    }
+  change(s:string){
+    this.active = s;
+  }
 }

@@ -1,0 +1,14 @@
+const proxy = {
+    'GET /layouts': [
+      { "id": 1, "name": "Mock Layout 1", "creation_date": "Mon, 01 Nov 2023 20:33:59 GMT" },
+      { "id": 2, "name": "Mock Layout 2", "creation_date": "Mon, 02 Nov 2023 20:33:59 GMT" },
+      { "id": 3, "name": "Mock Layout 3", "creation_date": "Mon, 03 Nov 2023 20:33:59 GMT" },
+      { "id": 4, "name": "Mock Layout 4", "creation_date": "Mon, 04 Nov 2023 20:33:59 GMT" },
+      { "id": 5, "name": "Mock Layout 5", "creation_date": "Mon, 05 Nov 2023 20:33:59 GMT" },
+      { "id": 6, "name": "Mock Layout 6", "creation_date": "Mon, 06 Nov 2023 20:33:59 GMT" },
+      { "id": 7, "name": "Mock Layout 7", "creation_date": "Mon, 07 Nov 2023 20:33:59 GMT" },
+      { "id": 8, "name": "Mock Layout 8", "creation_date": "Mon, 08 Nov 2023 20:33:59 GMT" },
+      { "id": 9, "name": "Mock Layout 9", "creation_date": "Mon, 09 Nov 2023 20:33:59 GMT" }
+    ]
+  }
+  module.exports = proxy;

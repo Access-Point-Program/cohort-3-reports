@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+import { LayoutService } from '../layout.service';
+import { Layout } from '../layout';
+import { HttpClient } from '@angular/common/http';
+import { Menu } from './menu';
+
+@Component({
+  selector: 'app-menu-form',
+  templateUrl: './menu-form.component.html',
+  styleUrls: ['./menu-form.component.css']
+})
+export class MenuFormComponent implements OnInit{
+  Layout: Layout[] = [];
+  data: any;
+	constructor(private http: HttpClient) {
+		
+	}
+
+	ngOnInit(): void {
+		this.http.get('resource').subscribe((data: any) => this.data = data);;
+		
+  }
+
+  powers = ['Layout Filter One', 'Layout Filter Two',
+            'Layout Filter Three', 'Layout Filter Four'];
+  ruleset = [' RuleSet Filter One', ' RuleSet Filter Two',
+            'RuleSet Filter Three', 'RuleSet Filter Four'];
+  rulesetselection?: string;
+  powersselection?: string;
+
+  model = new Menu(18,'Dr. IQ',this.powers[0],'Chuck Overstreet');
+
+  submitted = false;
+  onSubmit() { this.submitted = true; }
+
+  
+   selection(one:string){this.rulesetselection= one} 
+   selections(one:string){this.powersselection= one}
+   
+}
+
