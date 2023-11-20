@@ -19,7 +19,7 @@ public class RulesetController {
     
     @GetMapping("/rulesets")
     ResponseEntity<List<Ruleset>> getData(){
-        List<Ruleset> output = rulesetService.mountain();
+        List<Ruleset> output = rulesetService.getAllRulesets();
         return ResponseEntity.ok().body(output);
     }
 
