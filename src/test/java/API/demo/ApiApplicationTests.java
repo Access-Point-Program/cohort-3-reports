@@ -1,8 +1,6 @@
 package API.demo;
 
-import static org.mockito.ArgumentMatchers.isA;
 
-import java.net.URL;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -36,9 +34,20 @@ class ApiApplicationTests {
 				.get(BASE_URL)
 			.then()
 				.log().ifValidationFails(LogDetail.ALL)
-				.statusCode(200)
 				.contentType(ContentType.JSON)
 				.body(is(instanceOf(List.class)));
+	}
+
+	@Test
+	void doesApiRetunSameStatuscode() {
+		RestAssured
+			.given()
+			.when()
+				.get(BASE_URL)
+			.then()
+				.log().ifValidationFails(LogDetail.ALL)
+				.statusCode(200)
+				.contentType(ContentType.JSON);
 	}
 
 	@Test

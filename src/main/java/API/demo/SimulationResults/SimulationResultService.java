@@ -6,7 +6,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import ch.qos.logback.core.Layout;
 
 import java.util.List;
 
@@ -62,7 +61,7 @@ public class SimulationResultService {
 
   }
 
-  
+
   /*private List<SimulationResult> setupSimulations(List<SimulationResult> simulations) {
     List<Ruleset> rulesets = webClient.get()
         .uri("")
