@@ -1,6 +1,3 @@
-// import { AppRoutingModule } from './app-routing.module';
-//    AppRoutingModule,
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,6 +8,7 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 @NgModule({
   declarations: [
