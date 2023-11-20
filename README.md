@@ -11,12 +11,10 @@ The application is to render reports and analytics on the Simulations runs. This
 
 ### Team Members
 
-- Joshua Haase
 - Deep Patel
-- Noah Naucke
-- Emani Fitzpatrick
 - Brian Rogers
 - Myesha White
+- Elissa Price Willis
 
 ### Requirements:
 

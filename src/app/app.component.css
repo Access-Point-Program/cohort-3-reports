@@ -1,0 +1,16 @@
+.layouts{
+    display: flex;
+}
+select {
+    width: 10%;
+    height: max-content;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #000;
+  }
