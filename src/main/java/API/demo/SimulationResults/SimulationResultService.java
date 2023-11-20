@@ -61,6 +61,8 @@ public class SimulationResultService {
     return results;
 
   }
+
+  
   /*private List<SimulationResult> setupSimulations(List<SimulationResult> simulations) {
     List<Ruleset> rulesets = webClient.get()
         .uri("")
