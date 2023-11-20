@@ -1,54 +1,62 @@
-{
+[
+  {
     "id": 1,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
-{
-  "id": 2,
+  },
+  {
+    "id": 2,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
-{
+  },
+  {
     "id": 3,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
-{
+  },
+  {
     "id": 4,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
-{
+  },
+  {
     "id": 5,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
-{
+  },
+  {
     "id": 6,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
-{
+  },
+  {
     "id": 7,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
-{
+  },
+  {
     "id": 8,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
-{
+  },
+  {
     "id": 9,
     "name": "Mock Layout",
     "creator": "Cyclones",
     "creation_date": "11/1/23"
-}
+  },
+  {
+    "id": 10,
+    "name": "Mock Layout",
+    "creator": "Cyclones",
+    "creation_date": "11/1/23"
+  }
+]

@@ -3,10 +3,15 @@
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <!-- Chart 1 -->
-        <app-financial-chart></app-financial-chart>
-      </div>
-      <div class="carousel-caption">
-        <h3>First slide label</h3>
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'bar'"
+          width="700px"
+          height="200px"
+        >
+        </canvas>
       </div>
     </ng-template>
     <ng-template ngbSlide>
@@ -16,22 +21,24 @@
           baseChart
           [data]="barChartData"
           [options]="barChartOptions"
-          [type]="'bar'"
+          [type]="'pie'"
           width="700px"
-          height="300px"
+          height="200px"
         >
         </canvas>
-      </div>
-      <div class="carousel-caption">
-        <h3>Second slide label</h3>
       </div>
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
-        
-      </div>
-      <div class="carousel-caption">
-        <h3>Third slide label</h3>
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'line'"
+          width="700px"
+          height="200px"
+        >
+        </canvas>
       </div>
     </ng-template>
   </ngb-carousel>

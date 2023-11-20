@@ -1,6 +1,4 @@
 export interface Results {
-    
-    name: string;
     ruleset : string;
     layout : string; 
     iterations_used : number;
