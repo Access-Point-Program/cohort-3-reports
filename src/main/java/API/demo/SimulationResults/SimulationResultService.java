@@ -22,7 +22,7 @@ public class SimulationResultService {
 
 
   // Return a list of Simulation results That is of all the Results in the database
-  List<SimulationResult> getAll() {
+  public List<SimulationResult> getAll() {
 
 
     List<SimulationResult> results = webClient.get()
@@ -61,7 +61,7 @@ public class SimulationResultService {
     return results;
 
   }
-  private List<SimulationResult> setupSimulations(List<SimulationResult> simulations) {
+  /*private List<SimulationResult> setupSimulations(List<SimulationResult> simulations) {
     List<Ruleset> rulesets = webClient.get()
         .uri("")
         .retrieve()
@@ -85,5 +85,5 @@ public class SimulationResultService {
               .getName());
     });
     return simulations;
-  }
+  }*/
 }
