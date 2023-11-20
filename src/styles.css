@@ -1,3 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.carousel-control-prev::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+    filter: blur(5px) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    z-index: -1;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+  .carousel-control-next::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
+    filter: blur(5px) drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    z-index: -1;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+  }
+.carousel-control-prev:hover::after, .carousel-control-next:hover::after{
+    opacity: 1;
+
 /* Application-wide Styles */
 h1 {
   color: #369;

@@ -1,0 +1,38 @@
+<div class="mb-auto">
+  <ngb-carousel [interval]="3000" [pauseOnHover]="true">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <!-- Chart 1 -->
+        <app-financial-chart></app-financial-chart>
+      </div>
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <!-- Chart 2 -->
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'bar'"
+          width="700px"
+          height="300px"
+        >
+        </canvas>
+      </div>
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        
+      </div>
+      <div class="carousel-caption">
+        <h3>Third slide label</h3>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
