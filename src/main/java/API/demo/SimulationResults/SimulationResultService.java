@@ -6,7 +6,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-
+import ch.qos.logback.core.Layout;
 
 import java.util.List;
 
@@ -60,5 +60,30 @@ public class SimulationResultService {
       .toStream().filter((bottle)-> (bottle.getLayout_id() == layout)).toList();
     return results;
 
+  }
+  private List<SimulationResult> setupSimulations(List<SimulationResult> simulations) {
+    List<Ruleset> rulesets = webClient.get()
+        .uri("")
+        .retrieve()
+        .bodyToFlux(new ParameterizedTypeReference<Ruleset>() {})
+        .toStream().toList();
+    List<Layout> layouts = webClient.get()
+        .uri("")
+        .retrieve()
+        .bodyToFlux(new ParameterizedTypeReference<Layout>() {})
+        .toStream().toList();
+    simulations.forEach((el) -> {
+      el.setLayout(
+          layouts.stream().filter((element) -> element.getId().equals(el.getLayout_id()))
+              .findFirst()
+              .get()
+              .getName());
+      el.setRuleset(
+          rulesets.stream().filter((element) -> element.getId().equals(el.getRuleset_id()))
+              .findFirst()
+              .get()
+              .getName());
+    });
+    return simulations;
   }
 }
