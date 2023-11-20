@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { RulesetService } from './rulesets.service';
 import { DatePipe } from '@angular/common';
