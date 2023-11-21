@@ -1,5 +1,5 @@
 <div class="container shadow p-5 bg-body-tertiary rounded"
-style="height: 829px; width: auto"> 
+style="max-height: 800px; width: auto"> 
 	<p class="text-muted">Simulation Analytics</p>
 	<hr class="text-muted">
 	
@@ -17,7 +17,7 @@ style="height: 829px; width: auto">
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let result of RESULTS">
+			<tr *ngFor="let result of simulations">
 				<th scope="row">{{ result.layout }}</th>
 				<td>{{ result.ruleset }}</td>
 				<td>{{ result.iterations_used | number}}</td>

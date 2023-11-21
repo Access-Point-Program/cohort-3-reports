@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Results } from '../Results';
 import { AppService } from '../app.service';
+import { th } from 'date-fns/locale';
 
 
 @Component({
@@ -8,26 +9,30 @@ import { AppService } from '../app.service';
 	templateUrl: './tables.component.html',
 })
 export class TableComponent implements OnInit {
-	simulations: Results[] = [];
+	RESULTS: Results[] = [];
+	
 	// For Pagination
 	page = 1;
-	pageSize = 7;
-	collectionSize = this.simulations.length;
-	RESULTS!: Results[];
+	pageSize = 8;
+	collectionSize = this.RESULTS?.length;
+	simulations: Results[] = [];
 
 	
 	
-	constructor(private service: AppService) {}
+	constructor(private service: AppService) {	this.refreshResults(); }
 
 	// NG runs this first thing.
 	ngOnInit(): void {
-		console.log(this.simulations)
+		this.getSimulations();
+	}
+
+	getSimulations(): void{
+		this.service.getResults().subscribe((data) => {
+			this.RESULTS = data;
+			this.collectionSize = this.RESULTS.length;
+			this.refreshResults();
+	});
 		
-		this.service.getResults().subscribe((data) => {this.simulations = data; console.log(this.simulations)});
-
-		this.collectionSize = this.simulations.length;
-
-		this.refreshResults();
 	}
 
 	// ngOnChanges(_changes: SimpleChanges){
@@ -39,7 +44,7 @@ export class TableComponent implements OnInit {
 	// }
 
 	refreshResults() {
-		this.RESULTS = this.simulations.map((result) => ({ ...result })).slice(
+		this.simulations = this.RESULTS.map((results) => ({ ...results })).slice(
 			(this.page - 1) * this.pageSize,
 			(this.page - 1) * this.pageSize + this.pageSize,
 		);
