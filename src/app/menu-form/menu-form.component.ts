@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from '../layout.service';
 import { Layout } from '../layout';
-import { HttpClient } from '@angular/common/http';
 import { Menu } from './menu';
+import { Ruleset } from '../Ruleset';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-menu-form',
@@ -10,32 +10,26 @@ import { Menu } from './menu';
   styleUrls: ['./menu-form.component.css']
 })
 export class MenuFormComponent implements OnInit{
-  Layout: Layout[] = [];
-  data: any;
-	constructor(private http: HttpClient) {
-		
-	}
 
-	ngOnInit(): void {
-		this.http.get('resource').subscribe((data: any) => this.data = data);;
-		
-  }
+  Layouts:Layout[] = [];
+  Rulesets: Ruleset[] = [];
+  rulesetselection: string = '';
+  powersselection: string = '';
 
-  powers = ['Layout Filter One', 'Layout Filter Two',
-            'Layout Filter Three', 'Layout Filter Four'];
-  ruleset = [' RuleSet Filter One', ' RuleSet Filter Two',
-            'RuleSet Filter Three', 'RuleSet Filter Four'];
-  rulesetselection?: string;
-  powersselection?: string;
-
-  model = new Menu(18,'Dr. IQ',this.powers[0],'Chuck Overstreet');
+  // model = new Menu(18,'Dr. IQ',this.powers[0]);
+  constructor(private service: AppService){}
 
   submitted = false;
   onSubmit() { this.submitted = true; }
 
+  ngOnInit(): void {
+    this.service.getLayouts().subscribe((data) => { this.Layouts = data});
+    this.service.getRulesets().subscribe((data) => { this.Rulesets = data});
+  }
+
   
-   selection(one:string){this.rulesetselection= one} 
-   selections(one:string){this.powersselection= one}
+  selection(one:string){this.rulesetselection= one} 
+  selections(one:string){this.powersselection= one}
    
 }
 

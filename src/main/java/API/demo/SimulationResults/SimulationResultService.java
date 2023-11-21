@@ -1,78 +1,87 @@
 package API.demo.SimulationResults;
 
-
-
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import API.demo.Layouts.Layout;
+import API.demo.Rulesets.Ruleset;
 
 import java.util.List;
-
 
 @Service
 
 public class SimulationResultService {
 
-
-
   private final WebClient webClient = WebClient.create();
-  private final String url = "http://localhost:9010/results";
-
+  private final String resultsUrl = "http://localhost:9010/results";
+  private final String rulesetUrl = "http://localhost:9010/rulesets";
+  private final String layoutsUrl = "http://localhost:9010/layouts";
 
   // Return a list of Simulation results That is of all the Results in the database
   public List<SimulationResult> getAll() {
 
-
     List<SimulationResult> results = webClient.get()
-        .uri(this.url)
+        .uri(this.resultsUrl)
         .retrieve()
-        .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
-      .toStream().toList();
+        .bodyToFlux(new ParameterizedTypeReference<SimulationResult>() {
+        })
+        .toStream().toList();
 
-
-    return results;
+    return setupSimulations(results);
   }
+
   List<SimulationResult> getByRulesetAndLayout(Integer ruleset, Integer layout) {
-      List<SimulationResult> results = webClient.get()
-        .uri(this.url)
+    List<SimulationResult> results = webClient.get()
+        .uri(this.resultsUrl)
         .retrieve()
-        .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
-        .toStream().filter((bottle)-> (bottle.getRuleset_id() == ruleset && bottle.getLayout_id() == layout)).toList();
-      return results;
+        .bodyToFlux(new ParameterizedTypeReference<SimulationResult>() {
+        })
+        .toStream().filter((bottle) -> (bottle.getRuleset_id() == ruleset && bottle.getLayout_id() == layout)).toList();
+    return setupSimulations(results);
 
   }
+
   List<SimulationResult> getByRuleset(Integer ruleset) {
     List<SimulationResult> results = webClient.get()
-      .uri(this.url)
-      .retrieve()
-      .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
-      .toStream().filter((bottle)-> (bottle.getRuleset_id() == ruleset)).toList();
-    return results;
+        .uri(this.resultsUrl)
+        .retrieve()
+        .bodyToFlux(new ParameterizedTypeReference<SimulationResult>() {
+        })
+        .toStream().filter((bottle) -> (bottle.getRuleset_id() == ruleset)).toList();
+    return setupSimulations(results);
 
   }
+
   List<SimulationResult> getByLayout(Integer layout) {
     List<SimulationResult> results = webClient.get()
-      .uri(this.url)
-      .retrieve()
-      .bodyToFlux(new ParameterizedTypeReference<SimulationResult>(){})
-      .toStream().filter((bottle)-> (bottle.getLayout_id() == layout)).toList();
-    return results;
+        .uri(this.resultsUrl)
+        .retrieve()
+        .bodyToFlux(new ParameterizedTypeReference<SimulationResult>() {
+        })
+        .toStream().filter((bottle) -> (bottle.getLayout_id() == layout)).toList();
+
+    return setupSimulations(results);
 
   }
 
-
-  /*private List<SimulationResult> setupSimulations(List<SimulationResult> simulations) {
+  // Apply correct conversions
+  private List<SimulationResult> setupSimulations(List<SimulationResult> simulations) {
+    
     List<Ruleset> rulesets = webClient.get()
-        .uri("")
+        .uri(rulesetUrl)
         .retrieve()
-        .bodyToFlux(new ParameterizedTypeReference<Ruleset>() {})
+        .bodyToFlux(new ParameterizedTypeReference<Ruleset>() {
+        })
         .toStream().toList();
+
     List<Layout> layouts = webClient.get()
-        .uri("")
+        .uri(layoutsUrl)
         .retrieve()
-        .bodyToFlux(new ParameterizedTypeReference<Layout>() {})
+        .bodyToFlux(new ParameterizedTypeReference<Layout>() {
+        })
         .toStream().toList();
+
     simulations.forEach((el) -> {
       el.setLayout(
           layouts.stream().filter((element) -> element.getId().equals(el.getLayout_id()))
@@ -85,6 +94,8 @@ public class SimulationResultService {
               .get()
               .getName());
     });
+
     return simulations;
-  }*/
+  }
+
 }

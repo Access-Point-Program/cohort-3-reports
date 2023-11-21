@@ -1,0 +1,45 @@
+<div class="mb-auto">
+  <ngb-carousel [interval]="3000" [pauseOnHover]="true">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <!-- Chart 1 -->
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'bar'"
+          width="700px"
+          height="200px"
+        >
+        </canvas>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <!-- Chart 2 -->
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'pie'"
+          width="700px"
+          height="200px"
+        >
+        </canvas>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'line'"
+          width="700px"
+          height="200px"
+        >
+        </canvas>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

@@ -17,8 +17,6 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import API.demo.Rulesets.Ruleset;
-import io.restassured.RestAssured;
-import io.restassured.filter.log.LogDetail;
 
 @SpringBootTest(classes = {API.demo.ApiApplication.class})
 class ApiApplicationTests {

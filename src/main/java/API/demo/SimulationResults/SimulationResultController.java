@@ -21,13 +21,17 @@ public class SimulationResultController {
 
   @GetMapping("/simulations")
   ResponseEntity<List<SimulationResult>> getData(@RequestParam(required = false)Integer ruleset, @RequestParam(required = false)Integer layout) {
+
     if(ruleset != null && layout != null){
       return ResponseEntity.ok(simulationResultService.getByRulesetAndLayout(ruleset, layout));
-    } else if (layout != null) {
+    } 
+    else if (layout != null) {
       return ResponseEntity.ok(simulationResultService.getByLayout(layout));
-    } else if (ruleset != null) {
+    } 
+    else if (ruleset != null) {
       return ResponseEntity.ok(simulationResultService.getByRuleset(ruleset));
     }
+    
     return ResponseEntity.ok(simulationResultService.getAll());
   }
 }

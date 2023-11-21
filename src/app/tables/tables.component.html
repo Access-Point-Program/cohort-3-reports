@@ -1,9 +1,12 @@
-<div class="col-md-8   shadow p-4 bg-body-tertiary rounded"  > 
+<div class="container shadow p-5 bg-body-tertiary rounded"
+style="max-height: 800px; width: auto"> 
 	<p class="text-muted">Simulation Analytics</p>
 	<hr class="text-muted">
-	<div></div>
+	
+	<app-carousel class="col-6"></app-carousel>
+	
 
-	<table class="table table-striped">
+	<table class="table table-striped align-items-center justify-content-between">
 		<thead>
 			<tr>
 				<th scope="col">Layout</th>
@@ -14,24 +17,24 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let result of RESULTS">
+			<tr *ngFor="let result of simulations">
 				<th scope="row">{{ result.layout }}</th>
 				<td>{{ result.ruleset }}</td>
-				<td>{{ result.iterations_used| number}}</td>
-				<td>{{ result.creation_date | number }}</td>
+				<td>{{ result.iterations_used | number}}</td>
+				<td>{{ result.creation_date | date }}</td>
 				<td *ngIf = "result.successful"><img src="./assets/media/checkbox.svg/"></td>
 				<td *ngIf = "!result.successful"><img src="./assets/media/xbox.svg/"></td>
 			</tr>
 		</tbody>
 	</table>
 
-	<div class="d-flex justify-content-between p-2">
+	<div class="d-flex justify-content-between">
 		<ngb-pagination
-			[collectionSize]="collectionSize"
-			[(page)]="page"
-			[pageSize]="10"
-			(pageChange)="refreshResults()"
+		  [collectionSize]="collectionSize"
+		  [(page)]="page"
+		  [pageSize]="pageSize"
+		  (pageChange)="refreshResults()"
 		>
 		</ngb-pagination>
-	</div>
+	  </div>
 </div>

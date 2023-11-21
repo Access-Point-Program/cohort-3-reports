@@ -1,32 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import { DecimalPipe, NgFor } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { TableService } from '../table.service';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Results } from '../Results';
+import { AppService } from '../app.service';
+import { th } from 'date-fns/locale';
 
 
 @Component({
 	selector: 'table-component',
 	templateUrl: './tables.component.html',
 })
-export class TableComponent implements OnInit{
+export class TableComponent implements OnInit {
 	RESULTS: Results[] = [];
-	page = 1;
-	pageSize = 10;
-	collectionSize = this.RESULTS.length;
 	
+	// For Pagination
+	page = 1;
+	pageSize = 8;
+	collectionSize = this.RESULTS?.length;
+	simulations: Results[] = [];
 
-	constructor(private service:TableService) {
-		this.refreshResults();
-	}
+	
+	
+	constructor(private service: AppService) {	this.refreshResults(); }
 
+	// NG runs this first thing.
 	ngOnInit(): void {
-		this.service.getResults().subscribe((data)=>{this.RESULTS = data});
-		this.collectionSize = this.RESULTS.length;
+		this.getSimulations();
 	}
+
+	getSimulations(): void{
+		this.service.getResults().subscribe((data) => {
+			this.RESULTS = data;
+			this.collectionSize = this.RESULTS.length;
+			this.refreshResults();
+	});
+		
+	}
+
+	// ngOnChanges(_changes: SimpleChanges){
+
+	// 	// if it detects changes update the same thing to make sure everything works
+	// 	this.simulations = this.simulations.sort((a:Results, b:Results) => b.creation_date - a.creation_date);
+	// 	this.collectionSize = this.simulations.length;
+	// 	this.refreshResults();
+	// }
 
 	refreshResults() {
-		this.RESULTS = this.RESULTS.map((result) => ({ ...result })).slice(
+		this.simulations = this.RESULTS.map((results) => ({ ...results })).slice(
 			(this.page - 1) * this.pageSize,
 			(this.page - 1) * this.pageSize + this.pageSize,
 		);
