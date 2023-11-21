@@ -1,0 +1,40 @@
+<div class="container shadow p-5 bg-body-tertiary rounded"
+style="max-height: 800px; width: auto"> 
+	<p class="text-muted">Simulation Analytics</p>
+	<hr class="text-muted">
+	
+	<app-carousel class="col-6"></app-carousel>
+	
+
+	<table class="table table-striped align-items-center justify-content-between">
+		<thead>
+			<tr>
+				<th scope="col">Layout</th>
+				<th scope="col">Ruleset</th>
+				<th scope="col">Iterations</th>
+				<th scope="col">Completed</th>
+				<th scope="col">Passed</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let result of simulations">
+				<th scope="row">{{ result.layout }}</th>
+				<td>{{ result.ruleset }}</td>
+				<td>{{ result.iterations_used | number}}</td>
+				<td>{{ result.creation_date | date }}</td>
+				<td *ngIf = "result.successful"><img src="./assets/media/checkbox.svg/"></td>
+				<td *ngIf = "!result.successful"><img src="./assets/media/xbox.svg/"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="d-flex justify-content-between">
+		<ngb-pagination
+		  [collectionSize]="collectionSize"
+		  [(page)]="page"
+		  [pageSize]="pageSize"
+		  (pageChange)="refreshResults()"
+		>
+		</ngb-pagination>
+	  </div>
+</div>

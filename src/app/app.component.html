@@ -1,1 +1,17 @@
-<app-sidebar></app-sidebar>
+<main class=" d-flex flex-nowrap" >
+  <app-sidebar class="col-sm-3 col-12 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar "
+  style="height: 100vh; max-width: 280px;"></app-sidebar>
+  
+  <div class="container p-4">
+    <div class="row g-4"> 
+      <ng-container >
+        <div class="col-8">
+          <table-component></table-component>
+        </div>
+        <div class="col-4">
+          <app-menu-form></app-menu-form>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</main>
