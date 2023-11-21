@@ -1,31 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Layout } from '../layout';
 import { Menu } from './menu';
 import { Ruleset } from '../Ruleset';
-import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-menu-form',
   templateUrl: './menu-form.component.html',
   styleUrls: ['./menu-form.component.css']
 })
-export class MenuFormComponent implements OnInit{
+export class MenuFormComponent implements OnChanges{
 
-  Layouts:Layout[] = [];
-  Rulesets: Ruleset[] = [];
+  @Input() Layouts:Layout[] = [];
+  @Input() Rulesets: Ruleset[] = [];
+
+  @Output() userSelections: any = new EventEmitter<[]>();
+
+
   rulesetselection: string = '';
   powersselection: string = '';
 
   // model = new Menu(18,'Dr. IQ',this.powers[0]);
-  constructor(private service: AppService){}
+  constructor(){}
 
   submitted = false;
   onSubmit() { this.submitted = true; }
 
-  ngOnInit(): void {
-    this.service.getLayouts().subscribe((data) => { this.Layouts = data});
-    this.service.getRulesets().subscribe((data) => { this.Rulesets = data});
+  ngOnChanges(_changes: SimpleChanges){
+    this.submitted = false;
+    
   }
+
 
   
   selection(one:string){this.rulesetselection= one} 

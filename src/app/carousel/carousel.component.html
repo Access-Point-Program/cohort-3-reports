@@ -2,7 +2,7 @@
   <ngb-carousel [interval]="3000" [pauseOnHover]="true">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
-        <!-- Chart 1 -->
+        <!-- Chart 1 <chart [input]="Simulations"> -->
         <canvas
           baseChart
           [data]="barChartData"
@@ -22,6 +22,7 @@
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
+        <!-- Chart 3  <chart [input]="Simulations">-->
         <canvas
           baseChart
           [data]="barChartData"

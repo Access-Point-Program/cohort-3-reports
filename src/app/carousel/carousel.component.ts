@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
+import { Results } from '../Results';
 
 @Component({
   selector: 'app-carousel',
@@ -8,6 +9,9 @@ import { ChartConfiguration } from 'chart.js';
 })
 export class CarouselComponent {
 
+  @Input() Simulations: Results[] = [];
+
+// Mock Data
   public barChartData: ChartConfiguration['data'] = {
     labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
     datasets: [
