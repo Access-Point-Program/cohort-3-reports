@@ -17,15 +17,7 @@
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <!-- Chart 2 -->
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [type]="'pie'"
-          width="700px"
-          height="200px"
-        >
-        </canvas>
+        <app-pie-chart></app-pie-chart>
       </div>
     </ng-template>
     <ng-template ngbSlide>

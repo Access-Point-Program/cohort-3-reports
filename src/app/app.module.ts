@@ -12,7 +12,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TableComponent } from './tables/tables.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
-import { MyChartComponent } from './Compenents/my-chart/my-chart.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { MyChartComponent } from './Compenents/my-chart/my-chart.component';
     CarouselComponent,
     TableComponent,
     MenuFormComponent,
-    MyChartComponent
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
