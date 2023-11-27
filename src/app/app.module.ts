@@ -13,6 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TableComponent } from './tables/tables.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { FinChartComponent } from './fin-chart/fin-chart.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     TableComponent,
     MenuFormComponent,
     PieChartComponent,
+    FinChartComponent,
   ],
   imports: [
     BrowserModule,

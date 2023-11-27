@@ -23,15 +23,7 @@
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <!-- Chart 3  <chart [input]="Simulations">-->
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [type]="'line'"
-          width="700px"
-          height="200px"
-        >
-        </canvas>
+        <app-fin-chart [Simulations]="Simulations"/>
       </div>
     </ng-template>
   </ngb-carousel>
