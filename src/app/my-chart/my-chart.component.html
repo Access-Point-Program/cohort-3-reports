@@ -1,8 +1,11 @@
-<p>my-chart works!</p>
-<div style="display: block">
-    <canvas mdbChart
-    
-    (chartHover)="chartHovered($event)"
-    (chartClick)="chartClicked($event)">
+<div>
+    <canvas 
+    baseChart
+    [data]="barChartData"
+    [type]="barChartType"
+    [options]="barChartOptions"
+    height="200px"
+    width="700px">
   </canvas>
+  
 </div>
