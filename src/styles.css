@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 
-main {
-  height:100vh;
+.dropdown-item{
+  --bs-dropdown-link-hover-color: #7749F8;
+}
+
+.btn-outline-secondary{
+  --bs-btn-hover-bg: #7749f8;
 }
 
 .carousel-control-prev::after {

@@ -23,8 +23,11 @@ export class AppComponent implements OnInit {
     this.getSimulations();
   }
   
-  userSelection(event: Event) {
+  userSelection(event: {[key:string]: number}) {
     // make a call with params
+    this.service.getResults(event['ruleset'], event['layout']).subscribe((data) => {
+      this.Simulations = data;
+    })
   }
 
   getSimulations(): void {

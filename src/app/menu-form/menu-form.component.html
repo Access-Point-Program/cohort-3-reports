@@ -3,46 +3,50 @@
     <label for="FormControl">Filters</label>
     <hr />
     <!-- "d-flex flex-row-reverse  -->
-    <form ngbDropdown class="d-grid gap-2 g-col-4">
+    <div ngbDropdown class="d-grid gap-2 g-col-4">
       <button
         type="button"
         class="btn btn-outline-secondary btn-block"
         id="dropdownBasic1"
         ngbDropdownToggle
       >
-        {{ powersselection || "Layout Filter" }}
+        {{ layoutSelection?.name || "Layout Filter" }}
       </button>
       <div ngbDropdownMenu style="width: 100%" aria-labelledby="dropdownBasic1">
         <button
-          (click)="selections(pow.name)"
+          (click)="selectLayout(layout)"
           ngbDropdownItem
-          *ngFor="let pow of Layouts"
-          [value]="pow.name"
+          *ngFor="let layout of Layouts"
+          [value]="layout.name"
         >
-          {{ pow.name }}
+          {{ layout.name }}
         </button>
+        <button (click)="selectLayout()"
+        ngbDropdownItem>All</button>
       </div>
-    </form>
+    </div>
   </div>
   <br />
-  <form ngbDropdown class="d-grid gap-2 co">
+  <div ngbDropdown class="d-grid gap-2 co">
     <button
       type="button"
       class="btn btn-outline-secondary btn-block"
       id="dropdownBasic1"
       ngbDropdownToggle
     >
-      {{ rulesetselection || "Ruleset Filter" }}
+      {{ rulesetSelection?.name || "Ruleset Filter" }}
     </button>
     <div ngbDropdownMenu style="width: 100%" aria-labelledby="dropdownBasic1">
       <button
-        (click)="selection(pow.name)"
+        (click)="selectRuleset(ruleset)"
         ngbDropdownItem
-        *ngFor="let pow of Rulesets"
-        [value]="pow.name"
+        *ngFor="let ruleset of Rulesets"
+        [value]="ruleset.name"
       >
-        {{ pow.name }}
+        {{ ruleset.name }}
       </button>
+      <button (click)="selectRuleset()"
+      ngbDropdownItem>All</button>
     </div>
-  </form>
+  </div>
 </div>

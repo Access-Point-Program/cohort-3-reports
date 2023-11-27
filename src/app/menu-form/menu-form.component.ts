@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Layout } from '../layout';
-import { Menu } from './menu';
 import { Ruleset } from '../Ruleset';
 
 @Component({
@@ -8,32 +7,36 @@ import { Ruleset } from '../Ruleset';
   templateUrl: './menu-form.component.html',
   styleUrls: ['./menu-form.component.css']
 })
-export class MenuFormComponent implements OnChanges{
+export class MenuFormComponent implements OnChanges {
 
-  @Input() Layouts:Layout[] = [];
+  @Input() Layouts: Layout[] = [];
   @Input() Rulesets: Ruleset[] = [];
 
-  @Output() userSelections: any = new EventEmitter<[]>();
+  @Output() userSelections: any = new EventEmitter<{ [key: string]: number | undefined }>();
 
 
-  rulesetselection: string = '';
-  powersselection: string = '';
+  rulesetSelection?: Ruleset;
+  layoutSelection?: Layout;
 
-  // model = new Menu(18,'Dr. IQ',this.powers[0]);
-  constructor(){}
+  constructor() { }
 
-  submitted = false;
-  onSubmit() { this.submitted = true; }
 
-  ngOnChanges(_changes: SimpleChanges){
-    this.submitted = false;
+
+  ngOnChanges(_changes: SimpleChanges) { }
+
+
+
+  selectRuleset(one: Ruleset | undefined = undefined) {
+    this.rulesetSelection = one;
     
+    this.userSelections.emit({ 'ruleset': this.rulesetSelection?.id, 'layout': this.layoutSelection?.id });
   }
 
+  selectLayout(one: Layout | undefined = undefined) {
+    this.layoutSelection = one;
 
-  
-  selection(one:string){this.rulesetselection= one} 
-  selections(one:string){this.powersselection= one}
-   
+    this.userSelections.emit({ 'ruleset': this.rulesetSelection?.id, 'layout': this.layoutSelection?.id });
+  }
+
 }
 

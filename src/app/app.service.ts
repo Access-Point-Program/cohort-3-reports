@@ -13,18 +13,18 @@ export class AppService {
   constructor(private http: HttpClient) { }
 
 
-  getResults(layoutID?: number, rulesetID?: number): Observable<Results[]> {
+  getResults(rulesetID?: number, layoutID?: number): Observable<Results[]> {
 
-    const params = new HttpParams();
+    let params : HttpParams = new HttpParams();
 
     if (layoutID) {
-      params.append('layout', layoutID);
+      params = params.append('layout', layoutID);
     }
 
     if (rulesetID) {
-      params.append('ruleset', rulesetID);
+      params = params.append('ruleset', rulesetID);
     }
-
+    
     return this.http.get<Results[]>(`/api/simulations`, { params }).pipe(
       catchError(this.handleError<Results[]>('getSimulations', []))
     );
