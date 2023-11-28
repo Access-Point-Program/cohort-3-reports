@@ -1,5 +1,5 @@
 export interface Layout {
     id: number;
     name: string;
-    creation_date: Date;
+    creation_date: number;
 }
