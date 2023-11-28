@@ -16,7 +16,7 @@ export class TableComponent implements OnChanges {
 	
 	// For Pagination
 	page = 1;
-	pageSize = 8;
+	pageSize = 10;
 	collectionSize = this.RESULTS.length;
 	simulations: Results[] = [];
 	

@@ -6,7 +6,7 @@
         "iterations_used": 10,
         "iterations_max": 20,
         "successful": true,
-        "creation_date": 1673174400
+        "creation_date": 1700923000000
       },
       {
         "id": 2,
@@ -15,7 +15,7 @@
         "iterations_used": 20,
         "iterations_max": 45,
         "successful": false,
-        "creation_date": 1673174500
+        "creation_date": 1700913000000
       },
       {
         "id": 3,
@@ -24,7 +24,7 @@
         "iterations_used": 30,
         "iterations_max": 90,
         "successful": true,
-        "creation_date": 1673174600
+        "creation_date": 1701010000000
       },
     {
         "id": 4,
@@ -33,7 +33,7 @@
         "iterations_used": 40,
         "iterations_max": 60,
         "successful": true,
-        "creation_date": 1673174700
+        "creation_date": 1701013000000
       },
       {
         "id": 5,
@@ -42,7 +42,7 @@
         "iterations_used": 50,
         "iterations_max": 70,
         "successful": true,
-        "creation_date": 1673174800
+        "creation_date": 1701013000000
       },
       {
         "id": 6,
@@ -50,8 +50,8 @@
         "ruleset_id": 6,
         "iterations_used": 60,
         "iterations_max": 100,
-        "successful": true,
-        "creation_date": 1673174900
+        "successful": false,
+        "creation_date": 1700803000000
       },
     {
         "id": 7,
@@ -60,7 +60,7 @@
         "iterations_used": 70,
         "iterations_max": 100,
         "successful": true,
-        "creation_date": 1673175000
+        "creation_date": 1701003000000
       },
       {
         "id": 8,
@@ -69,7 +69,7 @@
         "iterations_used": 80,
         "iterations_max": 100,
         "successful": true,
-        "creation_date": 1673175100
+        "creation_date": 1701113210000
       },
       {
         "id": 9,
@@ -78,7 +78,7 @@
         "iterations_used": 90,
         "iterations_max": 100,
         "successful": true,
-        "creation_date": 1673175200
+        "creation_date": 1701226000000
       },
       {
         "id": 10,
@@ -87,6 +87,24 @@
         "iterations_used": 100,
         "iterations_max": 100,
         "successful": true,
-        "creation_date": 1673175300
+        "creation_date": 1700813000000
+      },
+      {
+        "id": 11,
+        "layout_id": 5,
+        "ruleset_id": 7,
+        "iterations_used": 20,
+        "iterations_max": 50,
+        "successful": false,
+        "creation_date": 1700713000000
+      } ,
+      {
+        "id": 12,
+        "layout_id": 7,
+        "ruleset_id": 7,
+        "iterations_used": 20,
+        "iterations_max": 75,
+        "successful": false,
+        "creation_date": 1700613000000
       } 
 ]
