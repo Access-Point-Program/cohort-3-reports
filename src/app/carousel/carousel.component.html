@@ -5,29 +5,26 @@
   <ngb-carousel [interval]="3000" [pauseOnHover]="true">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
-        <!-- Chart 1 <chart [input]="Simulations"> -->
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [type]="'bar'"
-          style="min-width: auto; min-height: 200px"
-          width="700px"
-          height="400px"
-        >
-        </canvas>
+
+        <!-- Chart 1 -->
+        <app-my-chart></app-my-chart>
+
       </div>
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <!-- Chart 2 -->
+
         <app-pie-chart></app-pie-chart>
+
       </div>
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
+
         <!-- Chart 3  <chart [input]="Simulations">-->
         <app-fin-chart [Simulations]="Simulations" />
+
       </div>
     </ng-template>
   </ngb-carousel>
