@@ -30,6 +30,7 @@ import { MyChartComponent } from './my-chart/my-chart.component';
     PieChartComponent,
     FinChartComponent,
     TableDirectiveDirective,
+    MyChartComponent,
   ],
   imports: [
     BrowserModule,

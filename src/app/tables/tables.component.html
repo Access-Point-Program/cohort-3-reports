@@ -9,12 +9,12 @@ style="max-height: 1000px; width: auto">
 	<table class="table table-striped ">
 		<thead>
 			<tr>
-				<th scope="col" sortable="layout" (sort)="onSort($event); page=1">Layout</th>
-				<th scope="col" sortable="ruleset" (sort)="onSort($event)">Ruleset</th>
-				<th scope="col" sortable="iterations_max" (sort)="onSort($event)">Max Iterations</th>
-				<th scope="col" sortable="iterations_used" (sort)="onSort($event)"> Used Iterations</th>
-				<th scope="col" sortable="creation_date" (sort)="onSort($event)">Completed</th>
-				<th scope="col" sortable="successful" (sort)="onSort($event)">Passed</th>
+				<th scope="col" sortable="layout" (sort)="onSort($event); page=1;">Layout</th>
+				<th scope="col" sortable="ruleset" (sort)="onSort($event); page=1;">Ruleset</th>
+				<th scope="col" sortable="iterations_max" (sort)="onSort($event); page=1;">Max Iterations</th>
+				<th scope="col" sortable="iterations_used" (sort)="onSort($event); page=1;"> Used Iterations</th>
+				<th scope="col" sortable="creation_date" (sort)="onSort($event); page=1;">Completed</th>
+				<th scope="col" sortable="successful" (sort)="onSort($event); page=1;">Passed</th>
 			</tr>
 		</thead>
 		<tbody>
