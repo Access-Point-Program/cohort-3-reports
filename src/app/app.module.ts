@@ -14,6 +14,7 @@ import { TableComponent } from './tables/tables.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { FinChartComponent } from './fin-chart/fin-chart.component';
+import { TableDirectiveDirective } from './table-directive.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FinChartComponent } from './fin-chart/fin-chart.component';
     MenuFormComponent,
     PieChartComponent,
     FinChartComponent,
+    TableDirectiveDirective,
   ],
   imports: [
     BrowserModule,

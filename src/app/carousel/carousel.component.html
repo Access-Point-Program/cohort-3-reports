@@ -1,4 +1,7 @@
-<div class="mb-auto">
+<div class="mb-auto container shadow p-5 bg-body-tertiary rounded">
+  <p class="text-muted">Simulation Analytics</p>
+  <hr class="text-muted" />
+
   <ngb-carousel [interval]="3000" [pauseOnHover]="true">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
@@ -8,8 +11,9 @@
           [data]="barChartData"
           [options]="barChartOptions"
           [type]="'bar'"
+          style="min-width: auto; min-height: 200px"
           width="700px"
-          height="200px"
+          height="400px"
         >
         </canvas>
       </div>
@@ -23,7 +27,7 @@
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <!-- Chart 3  <chart [input]="Simulations">-->
-        <app-fin-chart [Simulations]="Simulations"/>
+        <app-fin-chart [Simulations]="Simulations" />
       </div>
     </ng-template>
   </ngb-carousel>

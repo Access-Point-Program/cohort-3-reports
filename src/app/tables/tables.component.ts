@@ -1,12 +1,16 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { Results } from '../Results';
+import { SortEvent, TableDirectiveDirective } from '../table-directive.directive';
 
+const compare = (v1: string | number | boolean, v2: string | number | boolean) => (v1 < v2 ? -1 : v1 > v2 ? 1 : 0);
 
 @Component({
 	selector: 'table-component',
 	templateUrl: './tables.component.html',
 })
 export class TableComponent implements OnChanges {
+
+	@ViewChildren(TableDirectiveDirective) headers!: QueryList<TableDirectiveDirective>;
 
 	@Input() RESULTS: Results[] = [];
 	
@@ -31,5 +35,22 @@ export class TableComponent implements OnChanges {
 			(this.page - 1) * this.pageSize,
 			(this.page - 1) * this.pageSize + this.pageSize,
 		);
+	}
+
+	onSort({ column, direction }: SortEvent) {
+		// resetting other headers
+		for (const header of this.headers) {
+			if (header.sortable !== column) {
+				header.direction = '';
+			}
+		}
+		if (direction === '' || column === '') {
+			this.simulations = this.RESULTS;
+		} else {
+			this.simulations = [...this.RESULTS].sort((a, b) => {
+				const res = compare(a[column], b[column]);
+				return direction === 'asc' ? res : -res;
+			});
+		}
 	}
 }
