@@ -1,6 +1,7 @@
 .layouts{
     display: flex;
 }
+
 select {
     width: 10%;
     height: max-content;

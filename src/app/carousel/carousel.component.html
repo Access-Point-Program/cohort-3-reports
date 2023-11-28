@@ -1,44 +1,30 @@
-<div class="mb-auto">
+<div class="mb-auto container shadow p-5 bg-body-tertiary rounded">
+  <p class="text-muted">Simulation Analytics</p>
+  <hr class="text-muted" />
+
   <ngb-carousel [interval]="3000" [pauseOnHover]="true">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
+
         <!-- Chart 1 -->
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [type]="'bar'"
-          width="700px"
-          height="200px"
-        >
-        </canvas>
+        <app-my-chart></app-my-chart>
+
       </div>
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <!-- Chart 2 -->
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [type]="'pie'"
-          width="700px"
-          height="200px"
-        >
-        </canvas>
+
+        <app-pie-chart></app-pie-chart>
+
       </div>
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [type]="'line'"
-          width="700px"
-          height="200px"
-        >
-        </canvas>
+
+        <!-- Chart 3  <chart [input]="Simulations">-->
+        <app-fin-chart [Simulations]="Simulations" />
+
       </div>
     </ng-template>
   </ngb-carousel>

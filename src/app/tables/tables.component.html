@@ -1,26 +1,28 @@
 <div class="container shadow p-5 bg-body-tertiary rounded"
-style="max-height: 800px; width: auto"> 
+style="max-height: 1000px; width: auto"> 
 	<p class="text-muted">Simulation Analytics</p>
 	<hr class="text-muted">
 	
-	<app-carousel class="col-6"></app-carousel>
+	<!-- <app-carousel class="col-6" [Simulations]="RESULTS"></app-carousel> -->
 	
 
-	<table class="table table-striped align-items-center justify-content-between">
+	<table class="table table-striped ">
 		<thead>
 			<tr>
-				<th scope="col">Layout</th>
-				<th scope="col">Ruleset</th>
-				<th scope="col">Iterations</th>
-				<th scope="col">Completed</th>
-				<th scope="col">Passed</th>
+				<th scope="col" sortable="layout" (sort)="onSort($event); page=1">Layout</th>
+				<th scope="col" sortable="ruleset" (sort)="onSort($event)">Ruleset</th>
+				<th scope="col" sortable="iterations_max" (sort)="onSort($event)">Max Iterations</th>
+				<th scope="col" sortable="iterations_used" (sort)="onSort($event)"> Used Iterations</th>
+				<th scope="col" sortable="creation_date" (sort)="onSort($event)">Completed</th>
+				<th scope="col" sortable="successful" (sort)="onSort($event)">Passed</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let result of simulations">
-				<th scope="row">{{ result.layout }}</th>
+				<td scope="row">{{ result.layout }}</td>
 				<td>{{ result.ruleset }}</td>
 				<td>{{ result.iterations_used | number}}</td>
+				<td>{{ result.iterations_max | number}}</td>
 				<td>{{ result.creation_date | date }}</td>
 				<td *ngIf = "result.successful"><img src="./assets/media/checkbox.svg/"></td>
 				<td *ngIf = "!result.successful"><img src="./assets/media/xbox.svg/"></td>
