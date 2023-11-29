@@ -2,12 +2,12 @@
   <p class="text-muted">Simulation Analytics</p>
   <hr class="text-muted" />
 
-  <ngb-carousel [interval]="3000" [pauseOnHover]="true">
+  <ngb-carousel [interval]="5000" [pauseOnHover]="true">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
 
         <!-- Chart 1 -->
-        <app-my-chart></app-my-chart>
+        <app-my-chart [data]="Simulations"></app-my-chart>
 
       </div>
     </ng-template>

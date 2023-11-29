@@ -106,9 +106,9 @@ export class FinChartComponent implements OnInit, OnChanges {
       ],
     };
   }
-
+  
+  // filter to only get successful iterations through this.
   private screams(): Record<string, Results[]> {
-    
     
     return this.Simulations.reduce<Record<string, Results[]>>((sorted, result) => {
       if (!result.successful) return sorted;
@@ -132,13 +132,7 @@ export class FinChartComponent implements OnInit, OnChanges {
     const output: { o: number; h: number; c: number; l: number; x: number }[] =
       [];
 
-    const filteredList: Results[] = [];
-
-    // all successful iterations,
-    // filter to only get successful iterations through this.
-
     const sorted = this.dictionaryOfThings;
-    console.log({ sorted });
 
     const layoutnames = Object.keys(sorted).sort();
     for (const key in sorted) {
@@ -172,7 +166,6 @@ export class FinChartComponent implements OnInit, OnChanges {
       output.push(obj);
     }
 
-    console.log({ output });
     return output;
   }
 }
