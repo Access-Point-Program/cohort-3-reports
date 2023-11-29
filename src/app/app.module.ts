@@ -13,11 +13,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TableComponent } from './tables/tables.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 
-import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { FinChartComponent } from './fin-chart/fin-chart.component';
 import { TableDirectiveDirective } from './table-directive.directive';
 
 import { MyChartComponent } from './my-chart/my-chart.component';
+import { RadarChartComponent } from './radar-chart/radar-chart.component';
 
 
 @NgModule({
@@ -27,10 +27,10 @@ import { MyChartComponent } from './my-chart/my-chart.component';
     CarouselComponent,
     TableComponent,
     MenuFormComponent,
-    PieChartComponent,
     FinChartComponent,
     TableDirectiveDirective,
     MyChartComponent,
+    RadarChartComponent
   ],
   imports: [
     BrowserModule,
