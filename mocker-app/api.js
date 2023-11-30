@@ -1,4 +1,4 @@
-const results = require("./results.json")
+const results = require("./try.json")
 const rulesets = require('./Rulesets.json');
 const layouts = require('./layouts.json');
 
