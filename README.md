@@ -1,16 +1,16 @@
 # cohort-3-reports Installation
 Steps to Get CNN6 Reports Page running on a Windows Machine
 
-1. Clone down AccessPoint >> cohort-3-reports Repository using ```git clone <SSH/HTTP>```.
+1. Clone down this Repository using ```git clone <SSH/HTTP>```.
 2. Open the Repository in an IDE.
 3. Open Terminal.
-4. Run the following command(s): 
+4. Run the following commands: 
 	- ```npm i```
 	- ```npm i @angular/cli```
 	- ```./mvnw generate-resources```
-5. Run ApiApplication from your IDE. 
-6. Open your browser and go to this link to see CNN6 Reports page
-7. (Optional) If you wouldd like to see our beautiful charts, open a new terminal and run ```npm run mock:rulesets``` to see the charts come to life. 
+5. Run ```ApiApplication.java``` from your IDE. 
+6. Open your browser and go to this [link](http://localhost:9005/) to see CNN6 Reports page
+7. (Optional) If you want to see our beautiful charts, open a new terminal and run ```npm run mock:rulesets``` to see the charts come to life. 
 
 ## Reports 
 The application is to render reports and analytics on the Simulations runs. This application will leverage data visualizations through the User Interface. The user will be able to filter the data by specific Rulesets and Factory layouts. The report page contains a table of all the raw data that exists for the selected filters. Above the table, there should be multiple visualization charts that will provide quick insights into the data. The table and the charts should dynamically change as the filters are selected or deselected.
