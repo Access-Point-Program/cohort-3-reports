@@ -22,25 +22,32 @@ export class AppComponent implements OnInit {
     this.getRulesets();
     this.getSimulations();
   }
-  
-  userSelection(event: {[key:string]: number}) {
+
+  // Take input from menu-form component
+  userSelection(event: { [key: string]: number }) {
     // make a call with params
-    this.service.getResults(event['ruleset'], event['layout']).subscribe((data) => {
-      this.Simulations = data;
-    })
+    this.service
+      .getResults(event['ruleset'], event['layout'])
+      .subscribe((data) => {
+        this.Simulations = data;
+      });
   }
 
+  // Call service for Simulation Results
   getSimulations(): void {
     this.service.getResults().subscribe((data) => {
       this.Simulations = data;
     });
   }
 
+  // Call service for Layouts
   getLayouts(): void {
     this.service.getLayouts().subscribe((data) => {
       this.Layouts = data;
     });
   }
+
+  // Call service for Results
   getRulesets(): void {
     this.service.getRulesets().subscribe((data) => {
       this.Rulesets = data;

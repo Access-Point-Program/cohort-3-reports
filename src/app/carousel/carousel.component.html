@@ -5,26 +5,20 @@
   <ngb-carousel [interval]="5000" [pauseOnHover]="true">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
-
         <!-- Chart 1 -->
         <app-my-chart [data]="Simulations"></app-my-chart>
-
       </div>
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <!-- Chart 2 -->
-
         <app-radar-chart [Simulations]="Simulations" />
-
       </div>
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
-
-        <!-- Chart 3  <chart [input]="Simulations">-->
+        <!-- Chart 3-->
         <app-fin-chart [Simulations]="Simulations" />
-
       </div>
     </ng-template>
   </ngb-carousel>
