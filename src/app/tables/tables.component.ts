@@ -23,14 +23,14 @@ export class TableComponent implements OnChanges {
 	
 	constructor() { this.refreshResults(); }
 
+	// Update on changes to @Input
 	ngOnChanges(_changes: SimpleChanges){
-
-		// if it detects changes update the same thing to make sure everything works
 		this.sims = this.RESULTS.sort((a:Results, b:Results) => b.creation_date - a.creation_date);
 		this.collectionSize = this.RESULTS.length;
 		this.refreshResults();
 	}
 
+	// For Pagination
 	refreshResults() {
 		this.simulations = this.sims.map((results) => ({ ...results })).slice(
 			(this.page - 1) * this.pageSize,
@@ -38,6 +38,7 @@ export class TableComponent implements OnChanges {
 		);
 	}
 
+	// For Sorting 
 	onSort({ column, direction }: SortEvent) {
 		// resetting other headers
 		for (const header of this.headers) {
