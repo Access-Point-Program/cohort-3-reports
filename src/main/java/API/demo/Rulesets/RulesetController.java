@@ -23,4 +23,9 @@ public class RulesetController {
         return ResponseEntity.ok().body(output);
     }
 
+    @GetMapping("/rulesets-extended")
+    ResponseEntity<List<Ruleset>> getDataExtended(){
+        List<Ruleset> output = rulesetService.getAllRulesetsExtended();
+        return ResponseEntity.ok().body(output);
+    }
 }

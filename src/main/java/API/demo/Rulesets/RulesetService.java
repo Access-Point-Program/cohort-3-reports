@@ -25,5 +25,17 @@ public class RulesetService {
 
         return output;
     }
+
+       List<Ruleset> getAllRulesetsExtended(){
+        List<Ruleset> output = webclient.get()
+            .uri(url + "-extended")
+            .retrieve()
+            .bodyToFlux(new ParameterizedTypeReference<Ruleset>() {})
+            .toStream()
+            .toList();
+
+
+        return output;
+    }
  
 }
