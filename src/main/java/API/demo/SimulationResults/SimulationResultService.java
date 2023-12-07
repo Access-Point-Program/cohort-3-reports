@@ -15,7 +15,7 @@ public class SimulationResultService {
 
   private final WebClient webClient = WebClient.create();
   private final String resultsUrl = "http://localhost:9010/results";
-  private final String rulesetUrl = "http://localhost:9010/rulesets";
+  private final String rulesetUrl = "http://localhost:9010/rulesets-extended";
   private final String layoutsUrl = "http://localhost:9010/layouts";
 
   // Return a list of Simulation results That is of all the Results in the database

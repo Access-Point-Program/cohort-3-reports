@@ -1,75 +1,344 @@
 [
-    {
-        "id": 1,
-        "name": "Ruleset 1",
-        "creation_date": 1700924464070,
-        "rules": [
+  {
+    "id": 1,
+    "name": "Ruleset 1",
+    "creation_date": 1701275133606,
+    "rules": [
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "FORWARD",
+        "conditions": [
           {
-            "id": 30,
-            "priority": 1.0,
-            "event_type": "FORWARD",
-            "conditions": [
-              {
-                "id": 40,
-                "fact_type": "FRONT",
-                "value_type": "EMPTY"
-              }
-            ]
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "EMPTY"
+          },
+          {
+            "id": 20,
+            "fact_type": "RIGHT",
+            "value_type": "WALL"
+          },
+          {
+            "id": 15,
+            "fact_type": "RIGHT",
+            "value_type": "WALL"
+          },
+          {
+            "id": 45,
+            "fact_type": "LEFT",
+            "value_type": "EMPTY"
           }
         ]
       },
-    {
-        "id": 2,
-        "name": "Ruleset 2",
-        "creation_date": 1700946420034,
-        "rules": []
-    },
-    {
-        "id": 3,
-        "name": "Ruleset 3",
-        "creation_date": 1700961257136,
-        "rules": []
-    },
-    {
-        "id": 4,
-        "name": "Ruleset 4",
-        "creation_date": 1701013029452,
-        "rules": []
-    },
-    {
-        "id": 5,
-        "name": "Ruleset 5",
-        "creation_date": 1700960705735,
-        "rules": []
-    },
-    {
-        "id": 6,
-        "name": "Ruleset 6",
-        "creation_date": 1701009354418,
-        "rules": []
-    },
-    {
-        "id": 7,
-        "name": "Ruleset 7",
-        "creation_date": 1701004182251,
-        "rules": []
-    },
-    {
-        "id": 8,
-        "name": "Ruleset 8",
-        "creation_date": 1700936923365,
-        "rules": []
-    },
-    {
-        "id": 9,
-        "name": "Ruleset 9",
-        "creation_date": 1700928375743,
-        "rules": []
-    },
-    {
-        "id": 10,
-        "name": "Ruleset 10",
-        "creation_date": 1701013363975,
-        "rules": []
-    }
+      {
+        "id": 15,
+        "priority": 2.0,
+        "event_type": "RIGHT",
+        "conditions": [
+          {
+            "id": 10,
+            "fact_type": "LEFT",
+            "value_type": "WALL"
+          },
+          {
+            "id": 9,
+            "fact_type": "RIGHT",
+            "value_type": "EMPTY"
+          },
+          {
+            "id": 5,
+            "fact_type": "FRONT",
+            "value_type": "END"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Ruleset 2",
+    "creation_date": 1701275133606,
+    "rules": [
+      
+        {
+          "id": 27,
+          "priority": 1.0,
+          "event_type": "FORWARD",
+          "conditions": [
+            {
+              "id": 40,
+              "fact_type": "FRONT",
+              "value_type": "EMPTY"
+            }
+          ]
+        }
+      
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Ruleset 3",
+    "creation_date": 1700961257136,
+    "rules": [
+        {
+          "id": 35,
+          "priority": 1.0,
+          "event_type": "LEFT",
+          "conditions": [
+            {
+              "id": 40,
+              "fact_type": "FRONT",
+              "value_type": "EMPTY"
+            }
+          ]
+        }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Ruleset 4",
+    "creation_date": 1701013029452,
+    "rules": [
+      
+        {
+          "id": 1,
+          "priority": 1.0,
+          "event_type": "RIGHT",
+          "conditions": [
+            {
+              "id": 40,
+              "fact_type": "FRONT",
+              "value_type": "WALL"
+            },
+            {
+              "id": 10,
+              "fact_type": "RIGHT",
+              "value_type": "EMPTY"
+            }
+          ]
+        }
+      
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Ruleset 5",
+    "creation_date": 1700960705735,
+    "rules": [
+        {
+          "id": 3,
+          "priority": 1.0,
+          "event_type": "LEFT",
+          "conditions": [
+            {
+              "id": 90,
+              "fact_type": "LEFT",
+              "value_type": "EMPTY"
+            },
+            {
+              "id": 7,
+              "fact_type": "LEFT",
+              "value_type": "EMPTY"
+            }
+          ]
+        }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Ruleset 6",
+    "creation_date": 1701009354418,
+    "rules": [
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "FORWARD",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "EMPTY"
+          }
+        ]
+      },
+      {
+        "id": 87,
+        "priority": 2.0,
+        "event_type": "FORWARD",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "EMPTY"
+          }
+        ]
+      },
+      {
+        "id": 56,
+        "priority": 3.0,
+        "event_type": "RIGHT",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "WALL"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Ruleset 7",
+    "creation_date": 1701004182251,
+    "rules": [
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "FORWARD",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "EMPTY"
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "priority": 2.0,
+        "event_type": "RIGHT",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "EMPTY"
+          },
+          {
+            "id": 1,
+            "fact_type": "RIGHT",
+            "value_type": "EMPTY"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Ruleset 8",
+    "creation_date": 1700936923365,
+    "rules": [
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "RIGHT",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "LEFT",
+            "value_type": "WALL"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "priority": 2.0,
+        "event_type": "FORWARD",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "EMPTY"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Ruleset 9",
+    "creation_date": 1700928375743,
+    "rules": [
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "FORWARD",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "LEFT",
+            "value_type": "END"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "RIGHT",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "WALL"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "LEFT",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "LEFT",
+            "value_type": "EMPTY"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "RIGHT",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "RIGH",
+            "value_type": "EMPTY"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "FORWARD",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "FRONT",
+            "value_type": "EMPTY"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Ruleset 10",
+    "creation_date": 1701013363975,
+    "rules": [
+      {
+        "id": 30,
+        "priority": 1.0,
+        "event_type": "LEFT",
+        "conditions": [
+          {
+            "id": 40,
+            "fact_type": "LEFT",
+            "value_type": "EMPTY"
+          }
+        ]
+      }
+    ]
+  }
 ]

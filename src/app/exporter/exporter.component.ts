@@ -1,51 +1,59 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { Results } from '../Results';
 import { sum } from 'mathjs';
+import { AppService } from '../app.service';
+import { Ruleset } from '../Ruleset';
 
 @Component({
   selector: 'app-exporter',
   templateUrl: './exporter.component.html',
   styleUrls: ['./exporter.component.css']
 })
-export class ExporterComponent implements OnInit {
+export class ExporterComponent implements OnInit, OnChanges {
 
-  @Input() data: Results[] = [];
+  @Input() Simulations: Results[] = [];
+  @Input() Rulesets: Ruleset[] = [];
 
-  // MOCKS
-  private d: Results[] = RESULTS;
-  private r: any[] = RULSETS;
 
-  // TODO: Add service to constructor, make function to get data using service, and use ngoninit after done.
   // TODO: Add Multiple sheets for rulesets and layouts respectively?
   // TODO: Get the name of the current user from Pro.to.type
   // api/rulesets-extended cyclones endpoint.
-  
-  
-
 
 
   // API calls before this
   private user: string = '';
-  private constructD: any[] = [];  
-  private constructR: any[] = [];
+  private constructD: Results[] = [];  
+  private constructR: Ruleset[] = [];
 
 
   ngOnInit(): void {
-    this.constructD = this.updateDate(this.d);
-    this.constructR = this.updateDate(this.r);
+    this.constructD = this.updateDate(this.Simulations);
+    this.constructR = this.updateDate(this.Rulesets);
+  }
+
+  ngOnChanges(_changes: SimpleChanges): void {
+    this.constructD = this.updateDate(this.Simulations);
+
+    //Change Rulesets so it can only have unique rulesets
+    const g = this.Simulations.reduce<any[]>((acc, obj) => {
+      if (!acc.find((el) => el.name === obj.ruleset)) {
+        return [...acc, this.Rulesets.find((el) => el.name === obj.ruleset)]
+      }
+      return acc;
+    }, []);
+
+    this.constructR = this.updateDate(g);
   }
 
 
-  private updateDate(ls: any[]): any[] {
-    return ls.reduce<any>((el, acc) =>
-      [...el, { ...acc, creation_date: new Date(acc.creation_date)}]
+  private updateDate(ls: any[]) {
+    return ls.reduce((el, acc) =>
+      [...el, { ...acc, creation_date: new Date(acc.creation_date).toUTCString()}]
       , []);
   }
 
-  private cellStyle(ws: XLSX.WorkSheet) {
-
-    const cn = [XLSX.utils.decode_col("A"), XLSX.utils.decode_col("B"), XLSX.utils.decode_col("C"),  XLSX.utils.decode_col("D"),  XLSX.utils.decode_col("E"),  XLSX.utils.decode_col("F"), XLSX.utils.decode_col("G"), XLSX.utils.decode_col("H")];
+  private cellStyle(ws: XLSX.WorkSheet): XLSX.WorkSheet {
 
     // Metadata
     ws['!cols'] = [];
@@ -55,14 +63,11 @@ export class ExporterComponent implements OnInit {
       if(!ws["!cols"][i]) ws["!cols"][i] = {width: 14};
     }
 
-    const c = XLSX.utils.decode_row("1");
-    
-
     return ws;
   }
 
   private createTable(ws: XLSX.WorkSheet) : XLSX.WorkSheet{
-    const ttl = this.constructR.reduce((acc, el) => el.rules.length+acc, 0);
+    const ttl = this.constructR.reduce<number>((acc, el) => el.rules.length+acc, 0);
     const tb = XLSX.utils.decode_range(`F1:H${ttl}`);
    
 
@@ -73,24 +78,28 @@ export class ExporterComponent implements OnInit {
     // loop through row -> col
     let lp = tb.s.r+1;
     for(const rule of this.constructR){
-      const sumOfConditions = sum(rule.rules.reduce((acc:any, el:any) => el.conditions.length+acc, 0));
+      const sumOfConditions = sum(rule.rules.map((el) => el.conditions.length));
       const b = tb.s.c;
         
       //Ruleset
       ws[XLSX.utils.encode_cell({c: b, r: lp})] = { v: rule.name };
       
-      // Condition TODO
-      let str = 'WHEN ';
-
+      // Condition 
+      let str = '';
+      
       // WHEN Fact_type IS Value_type THEN Event_type
       // WHEN (__ IS __) AND (__IS__) THEN __
-      rule.rules.map((el: any) => {
-        el.conditions.map((condition:any) => {
-          
+      
+      // Fix bug TODO
+      rule.rules.map((el, i:number) => {
+        str+= `${i+1}. when `;
+        el.conditions.map((condition) => {
+          str+= `${condition.fact_type} is ${condition.value_type} and `
         })
+        str+= `then ${el.event_type}.\n`;
       });
 
-      ws[XLSX.utils.encode_cell({c: b+1, r: lp})] = { v: rule.rules.length }
+      ws[XLSX.utils.encode_cell({c: b+1, r: lp})] = { v: str }
       
       // Conditions count
       ws[XLSX.utils.encode_cell({c: b+2, r: lp})] = { v: sumOfConditions }
@@ -111,21 +120,17 @@ export class ExporterComponent implements OnInit {
     
     XLSX.utils.book_append_sheet(wb, ws, 'Simulations');
 
+    const v = this.constructR.reduce<any[]>((acc, {creation_date, name, id}) => { return [...acc, { id, name, creation_date}]}, []);
 
-    // Get only rules
-    const vr = this.constructR.reduce((acc, el) => { return [... acc, el.rules] }, []);
-
-    let ws2: XLSX.WorkSheet = this.cellStyle(XLSX.utils.json_to_sheet(this.constructR));
+    let ws2: XLSX.WorkSheet = this.cellStyle(XLSX.utils.json_to_sheet(v));
 
     ws2 = this.createTable(ws2);
-
-    console.log({ws2});
 
     XLSX.utils.book_append_sheet(wb, ws2, 'Rulesets');
 
 
     // save to file
-    XLSX.writeFile(wb, `${this.user? this.user: 'user'}-Simulation-Results.xlsx`, {cellStyles: true});
+    XLSX.writeFile(wb, `${this.user? `${this.user}-`: ''}Simulation-Results.xlsx`, {cellStyles: true});
   }
 
 }

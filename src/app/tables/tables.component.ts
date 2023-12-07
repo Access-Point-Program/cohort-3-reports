@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { Results } from '../Results';
 import { SortEvent, TableDirectiveDirective } from '../table-directive.directive';
+import { Ruleset } from '../Ruleset';
 
 const compare = (v1: string | number | boolean, v2: string | number | boolean) => (v1 < v2 ? -1 : v1 > v2 ? 1 : 0);
 
@@ -13,6 +14,7 @@ export class TableComponent implements OnChanges {
 	@ViewChildren(TableDirectiveDirective) headers!: QueryList<TableDirectiveDirective>;
 
 	@Input() RESULTS: Results[] = [];
+	@Input() Rulesets: Ruleset[] = [];
 	
 	// For Pagination
 	page = 1;

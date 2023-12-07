@@ -11,7 +11,7 @@ public class RulesetService {
     
 
     private final WebClient webclient = WebClient.create(); 
-    private final String url = "http://localhost:9010/rulesets";
+    private final String url = "http://localhost:9010/rulesets-extended";
 
 
     // Return a list of Rulesets That is of all the rulesets in the database
@@ -22,18 +22,6 @@ public class RulesetService {
             .bodyToFlux(new ParameterizedTypeReference<Ruleset>() {})
             .toStream()
             .toList();
-
-        return output;
-    }
-
-       List<Ruleset> getAllRulesetsExtended(){
-        List<Ruleset> output = webclient.get()
-            .uri(url + "-extended")
-            .retrieve()
-            .bodyToFlux(new ParameterizedTypeReference<Ruleset>() {})
-            .toStream()
-            .toList();
-
 
         return output;
     }

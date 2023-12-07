@@ -5,7 +5,6 @@ const layouts = require('./layouts.json');
 
 const proxy = {
     'GET /results': results,
-    'GET /rulesets': rulesets,
     'GET /rulesets-extended': rulesetsEx,
     'GET /layouts': layouts
   }
