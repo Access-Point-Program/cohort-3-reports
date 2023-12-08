@@ -15,12 +15,6 @@ export class ExporterComponent implements OnInit, OnChanges {
   @Input() Simulations: Results[] = [];
   @Input() Rulesets: Ruleset[] = [];
 
-
-  // TODO: Add Multiple sheets for rulesets and layouts respectively?
-  // TODO: Get the name of the current user from Pro.to.type
-  // api/rulesets-extended cyclones endpoint.
-
-
   // API calls before this
   private user: string = '';
   private constructD: Results[] = [];  
@@ -46,13 +40,14 @@ export class ExporterComponent implements OnInit, OnChanges {
     this.constructR = this.updateDate(g);
   }
 
-
+  // Add an actual date for excel to recognize
   private updateDate(ls: any[]) {
     return ls.reduce((el, acc) =>
       [...el, { ...acc, creation_date: new Date(acc.creation_date).toUTCString()}]
       , []);
   }
 
+  // Add per cell metadata for styles
   private cellStyle(ws: XLSX.WorkSheet): XLSX.WorkSheet {
 
     // Metadata
@@ -66,31 +61,39 @@ export class ExporterComponent implements OnInit, OnChanges {
     return ws;
   }
 
+  // For Rulesets, create a seperate table in the same sheet
   private createTable(ws: XLSX.WorkSheet) : XLSX.WorkSheet{
+
+    // total length of how many rules exist
     const ttl = this.constructR.reduce<number>((acc, el) => el.rules.length+acc, 0);
+
+    // get the range to use from the length
     const tb = XLSX.utils.decode_range(`F1:H${ttl}`);
    
 
+    // Titles
     ws[XLSX.utils.encode_cell({c: tb.s.c, r: 0})] = { v: 'Ruleset'};
-    ws[XLSX.utils.encode_cell({c: tb.s.c+1, r: 0})] = { v: 'Rule'};
+    ws[XLSX.utils.encode_cell({c: tb.s.c+1, r: 0})] = { v: 'Rule(s)'};
     ws[XLSX.utils.encode_cell({c: tb.s.c+2, r: 0})] = { v: 'Conditions'};
 
-    // loop through row -> col
+    // For loop to go through all rulesets
     let lp = tb.s.r+1;
     for(const rule of this.constructR){
+      // get totalt length or all rules in one ruleset
       const sumOfConditions = sum(rule.rules.map((el) => el.conditions.length));
+
+      // Starting point of the table in the worksheet
       const b = tb.s.c;
         
+
+      // Start Rendering
+
       //Ruleset
       ws[XLSX.utils.encode_cell({c: b, r: lp})] = { v: rule.name };
       
-      // Condition 
+      // WHEN Fact_type IS Value_type THEN Event_type
       let str = '';
       
-      // WHEN Fact_type IS Value_type THEN Event_type
-      // WHEN (__ IS __) AND (__IS__) THEN __
-      
-      // Fix bug TODO
       rule.rules.map((el, i:number) => {
         str+= `${i+1}. when `;
         el.conditions.map((condition) => {
@@ -98,7 +101,8 @@ export class ExporterComponent implements OnInit, OnChanges {
         })
         str+= `then ${el.event_type}.\n`;
       });
-
+      
+      // Condition as a string
       ws[XLSX.utils.encode_cell({c: b+1, r: lp})] = { v: str }
       
       // Conditions count
@@ -106,198 +110,38 @@ export class ExporterComponent implements OnInit, OnChanges {
       lp++;
     }
 
+    // update the ref so i can actually get rendered to the sheet
     ws['!ref'] = `A1:H${Math.max(this.constructR.length+1, ttl+1)}`;
 
     return ws;
-
   }
 
   // Transformation should be done feroe this. EXPORT TO SHEETS 
   public export(): void {
+
+    // New book
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     
+    // Simulations Sheet with correct Metadata
     const ws: XLSX.WorkSheet = this.cellStyle(XLSX.utils.json_to_sheet(this.constructD));
     
+    // Append to our workbook
     XLSX.utils.book_append_sheet(wb, ws, 'Simulations');
 
+    // Strip unwanted data
     const v = this.constructR.reduce<any[]>((acc, {creation_date, name, id}) => { return [...acc, { id, name, creation_date}]}, []);
 
+    // Rulesets Sheet with correct Metadata
     let ws2: XLSX.WorkSheet = this.cellStyle(XLSX.utils.json_to_sheet(v));
 
+    // add table to our worksheet
     ws2 = this.createTable(ws2);
 
+    // Append to the workbook
     XLSX.utils.book_append_sheet(wb, ws2, 'Rulesets');
 
 
     // save to file
     XLSX.writeFile(wb, `${this.user? `${this.user}-`: ''}Simulation-Results.xlsx`, {cellStyles: true});
   }
-
 }
-
-
-
-
-const RESULTS = [
-  {
-
-    layout: '3',
-    ruleset: '4',
-    iterations_used: 5,
-    iterations_max: 13,
-    successful: true,
-    creation_date: 1701275133606
-  },
-  {
-
-    layout: '8',
-    ruleset: '3',
-    iterations_used: 5,
-    iterations_max: 15,
-    successful: true,
-    creation_date: 1701058828980
-  },
-  {
-
-    layout: '3',
-    ruleset: '5',
-    iterations_used: 4,
-    iterations_max: 18,
-    successful: false,
-    creation_date: 1701058888980
-  },
-];
-
-const RULSETS = [
-  {
-    "id": 1,
-    "name": "Ruleset 1",
-    "creation_date": 1700924464070,
-    "rules": [
-      {
-        id: 30,
-        priority: 1.0,
-        event_type: 'FORWARD',
-        conditions: [
-          {
-            id: 40,
-            fact_type: "FRONT",
-            value_type: "EMPTY"
-          }
-        ]
-      }
-    ]
-  },  {
-    "id": 1,
-    "name": "Ruleset 1",
-    "creation_date": 1700924464070,
-    "rules": [
-      {
-        id: 30,
-        priority: 1.0,
-        event_type: 'FORWARD',
-        conditions: [
-          {
-            id: 40,
-            fact_type: "FRONT",
-            value_type: "EMPTY"
-          },
-          {
-            id: 40,
-            fact_type: "FRONT",
-            value_type: "EMPTY"
-          },
-          {
-            id: 40,
-            fact_type: "FRONT",
-            value_type: "EMPTY"
-          }
-        ]
-      }
-    ]
-  },  {
-    "id": 1,
-    "name": "Ruleset 1",
-    "creation_date": 1700924464070,
-    "rules": [
-      {
-        id: 30,
-        priority: 1.0,
-        event_type: 'FORWARD',
-        conditions: [
-          {
-            id: 40,
-            fact_type: "FRONT",
-            value_type: "EMPTY"
-          },
-          {
-            id: 40,
-            fact_type: "FRONT",
-            value_type: "EMPTY"
-          }
-        ]
-      }
-    ]
-  },  {
-    "id": 1,
-    "name": "Ruleset 1",
-    "creation_date": 1700924464070,
-    "rules": [
-      {
-        id: 30,
-        priority: 1.0,
-        event_type: 'FORWARD',
-        conditions: [
-        
-        ]
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Ruleset 2",
-    "creation_date": 1700946420034,
-    "rules": [{
-      id: 30,
-      priority: 1.0,
-      event_type: 'FORWARD',
-      conditions: [
-        {
-          id: 40,
-          fact_type: "FRONT",
-          value_type: "EMPTY"
-        }
-      ]
-    },
-    {
-      id: 30,
-      priority: 1.0,
-      event_type: 'FORWARD',
-      conditions: [
-        {
-          id: 40,
-          fact_type: "FRONT",
-          value_type: "EMPTY"
-        }
-      ]
-    }
-  ]
-  },
-  {
-    "id": 3,
-    "name": "Ruleset 3",
-    "creation_date": 1700961257136,
-    "rules": [{
-      id: 30,
-      priority: 1.0,
-      event_type: 'FORWARD',
-      conditions: [
-        {
-          id: 40,
-          fact_type: "FRONT",
-          value_type: "EMPTY"
-        }
-      ]
-    }]
-  },
-]
