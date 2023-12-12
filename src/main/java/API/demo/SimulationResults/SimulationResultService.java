@@ -15,8 +15,8 @@ public class SimulationResultService {
 
   private final WebClient webClient = WebClient.create();
   private final String resultsUrl = "http://localhost:9010/results";
-  private final String rulesetUrl = "http://localhost:9010/rulesets-extended";
-  private final String layoutsUrl = "http://localhost:9010/layouts";
+  private final String rulesetUrl = "http://localhost:9004/ruleset";
+  private final String layoutsUrl = "http://localhost:9004/layouts";
 
   // Return a list of Simulation results That is of all the Results in the database
   public List<SimulationResult> getAll() {
@@ -31,7 +31,7 @@ public class SimulationResultService {
     return setupSimulations(results);
   }
 
-  List<SimulationResult> getByRulesetAndLayout(Integer ruleset, Integer layout) {
+  public List<SimulationResult> getByRulesetAndLayout(Integer ruleset, Integer layout) {
     List<SimulationResult> results = webClient.get()
         .uri(this.resultsUrl)
         .retrieve()
@@ -42,7 +42,7 @@ public class SimulationResultService {
 
   }
 
-  List<SimulationResult> getByRuleset(Integer ruleset) {
+  public List<SimulationResult> getByRuleset(Integer ruleset) {
     List<SimulationResult> results = webClient.get()
         .uri(this.resultsUrl)
         .retrieve()
@@ -53,7 +53,7 @@ public class SimulationResultService {
 
   }
 
-  List<SimulationResult> getByLayout(Integer layout) {
+  public List<SimulationResult> getByLayout(Integer layout) {
     List<SimulationResult> results = webClient.get()
         .uri(this.resultsUrl)
         .retrieve()

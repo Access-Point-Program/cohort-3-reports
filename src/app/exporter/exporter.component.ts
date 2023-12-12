@@ -55,7 +55,7 @@ export class ExporterComponent implements OnInit, OnChanges {
 
     for(let i = 0; i < 8; i++){
       // create column metadata object if it does not exist
-      if(!ws["!cols"][i]) ws["!cols"][i] = {width: 14};
+      if(!ws["!cols"][i]) ws["!cols"][i] = {width: 18};
     }
 
     return ws;

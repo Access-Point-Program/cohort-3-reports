@@ -15,7 +15,7 @@ public class SimulationResult {
   private String layout;
   private Integer ruleset_id;
   private Integer layout_id;
-  private Long creation_date;
+  private String creation_date;
   private Integer iterations_used;
   private Integer iterations_max;
   private Boolean successful;

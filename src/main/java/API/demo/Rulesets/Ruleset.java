@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class Ruleset {
     private Integer id;
     private String name;
-    private Long creation_date;
+    private String creation_date;
     private List<?> rules;
 }

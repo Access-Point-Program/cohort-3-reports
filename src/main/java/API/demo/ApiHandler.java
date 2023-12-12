@@ -20,6 +20,6 @@ public class ApiHandler extends ResponseEntityExceptionHandler{
   }
   @ExceptionHandler(Exception.class)
   protected ResponseEntity<String> handleAll(RuntimeException ex, WebRequest request) {
-    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error\n" + ex.getCause());
   }
 }

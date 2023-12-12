@@ -18,7 +18,7 @@ public class LayoutsService {
         
 
         return this.webClient.get()
-                .uri("http://localhost:9010/layouts")
+                .uri("http://localhost:9004/layouts")
                 .retrieve()
                 .bodyToFlux(new ParameterizedTypeReference<Layout>() {})
                 .toStream().toList();
