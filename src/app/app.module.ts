@@ -1,24 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+// Imports
 import { HttpClientModule } from '@angular/common/http';
-
-
-import { NgbModule, NgbCarouselModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-
-import { CarouselComponent } from './carousel/carousel.component';
+import {
+  NgbModule,
+  NgbCarouselModule,
+  NgbPaginationModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { NgChartsModule } from 'ng2-charts';
+
+// Declarations
+import { AppComponent } from './app.component';
+import { CarouselComponent } from './carousel/carousel.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TableComponent } from './tables/tables.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
-
-import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { FinChartComponent } from './fin-chart/fin-chart.component';
 import { TableDirectiveDirective } from './table-directive.directive';
-
 import { MyChartComponent } from './my-chart/my-chart.component';
-
+import { RadarChartComponent } from './radar-chart/radar-chart.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,10 @@ import { MyChartComponent } from './my-chart/my-chart.component';
     CarouselComponent,
     TableComponent,
     MenuFormComponent,
-    PieChartComponent,
     FinChartComponent,
     TableDirectiveDirective,
     MyChartComponent,
+    RadarChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +43,6 @@ import { MyChartComponent } from './my-chart/my-chart.component';
     NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-//createa new config
-//4 components
+export class AppModule {}
