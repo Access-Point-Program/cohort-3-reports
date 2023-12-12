@@ -27,7 +27,7 @@ describe('TableComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should render a table', () => {
+  it('should render a table', () => {
     const table = fixture.debugElement.query(By.css(".table"));
 
     console.log(table);
