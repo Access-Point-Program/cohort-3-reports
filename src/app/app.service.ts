@@ -6,16 +6,15 @@ import { Ruleset } from './Ruleset';
 import { Layout } from './layout';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppService {
-
-  constructor(private http: HttpClient) { }
-
+  
+  constructor(private http: HttpClient) {}
 
   getResults(rulesetID?: number, layoutID?: number): Observable<Results[]> {
-
-    let params : HttpParams = new HttpParams();
+    // Add any parameters provided
+    let params: HttpParams = new HttpParams();
 
     if (layoutID) {
       params = params.append('layout', layoutID);
@@ -24,27 +23,29 @@ export class AppService {
     if (rulesetID) {
       params = params.append('ruleset', rulesetID);
     }
-    
-    return this.http.get<Results[]>(`/api/simulations`, { params }).pipe(
-      catchError(this.handleError<Results[]>('getSimulations', []))
-    );
-  }
 
+    // Make the call to the API
+    return this.http
+      .get<Results[]>(`/api/simulations`, { params })
+      .pipe(catchError(this.handleError<Results[]>('getSimulations', [])));
+  }
 
   // Get all the ruleset names only
   getRulesets(): Observable<Ruleset[]> {
+    // Make the call to the API
     return this.http
       .get<Ruleset[]>('/api/rulesets')
       .pipe(catchError(this.handleError<Ruleset[]>('getRulesets', [])));
   }
 
-  getLayouts(): Observable<Layout[]> {     // returning a list
-    return this.http.get<Layout[]>('/api/layouts')
-      .pipe(
-        catchError(this.handleError<Layout[]>('getLayouts', []))
-      );
+  getLayouts(): Observable<Layout[]> {
+    // Make the call to the API
+    return this.http
+      .get<Layout[]>('/api/layouts')
+      .pipe(catchError(this.handleError<Layout[]>('getLayouts', [])));
   }
 
+  // Error Handler
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

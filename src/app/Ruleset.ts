@@ -1,5 +1,5 @@
 export interface Ruleset {
-    id: number;
-    name: string;
-    creation_date: number | null;
+  id: number;
+  name: string;
+  creation_date: number | string;
 }

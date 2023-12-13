@@ -2,7 +2,6 @@
   <div class="form-group text-secondary">
     <label for="FormControl">Filters</label>
     <hr />
-    <!-- "d-flex flex-row-reverse  -->
     <div ngbDropdown class="d-grid gap-2 g-col-4">
       <button
         type="button"
@@ -21,8 +20,7 @@
         >
           {{ layout.name }}
         </button>
-        <button (click)="selectLayout()"
-        ngbDropdownItem>All</button>
+        <button (click)="selectLayout()" ngbDropdownItem>All</button>
       </div>
     </div>
   </div>
@@ -45,8 +43,7 @@
       >
         {{ ruleset.name }}
       </button>
-      <button (click)="selectRuleset()"
-      ngbDropdownItem>All</button>
+      <button (click)="selectRuleset()" ngbDropdownItem>All</button>
     </div>
   </div>
 </div>

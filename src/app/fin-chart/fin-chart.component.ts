@@ -21,6 +21,7 @@ import { Results } from '../Results';
   styleUrls: ['./fin-chart.component.css'],
 })
 export class FinChartComponent implements OnInit, OnChanges {
+  // Chart type
   public financialChartType: ChartType = 'candlestick';
 
   // Unfiltered data
@@ -31,6 +32,7 @@ export class FinChartComponent implements OnInit, OnChanges {
     [];
 
   private dictionaryOfThings: Record<string, Results[]> = {};
+
   // Update on changes to Input()
   ngOnChanges(_changes: SimpleChanges): void {
     this.dictionaryOfThings = this.screams();
@@ -53,6 +55,7 @@ export class FinChartComponent implements OnInit, OnChanges {
     ],
   };
 
+  // Chart Configuration
   public financialChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     animation: false,
@@ -64,7 +67,7 @@ export class FinChartComponent implements OnInit, OnChanges {
           callback: (value, index, ticks) => {
             const layoutnames = Object.keys(this.dictionaryOfThings).sort();
             return layoutnames[Number(index)];
-          }
+          },
         },
         adapters: {
           date: {
@@ -78,25 +81,27 @@ export class FinChartComponent implements OnInit, OnChanges {
         },
       },
     },
-    
+
     borderColor: 'black',
     backgroundColor: 'rgba(255,0,0,0,0.3)',
     plugins: {
-      tooltip: {enabled: false},
+      tooltip: { enabled: false },
       legend: {
         display: false,
       },
       title: {
         display: true,
-        text: 'Min. Max. Planned Vs Actual Iterations By Layout'
-      }
+        text: 'Min. Max. Planned Vs Actual Iterations By Layout',
+      },
     },
   };
 
+  // Register a Candle stick chart
   constructor() {
     Chart.register(CandlestickController, CandlestickElement);
   }
 
+  // update the variable and angular updates input to @Chart
   private update() {
     this.financialChartData = {
       datasets: [
@@ -106,22 +111,23 @@ export class FinChartComponent implements OnInit, OnChanges {
       ],
     };
   }
-  
+
   // filter to only get successful iterations through this.
   private screams(): Record<string, Results[]> {
-    
-    return this.Simulations.reduce<Record<string, Results[]>>((sorted, result) => {
-      if (!result.successful) return sorted;
-      if (!sorted[result.layout]) sorted[result.layout] = [];
-      
-      sorted[result.layout].push(result);
-      
-      return sorted;
-    }, {});
+    return this.Simulations.reduce<Record<string, Results[]>>(
+      (sorted, result) => {
+        if (!result.successful) return sorted;
+        if (!sorted[result.layout]) sorted[result.layout] = [];
+
+        sorted[result.layout].push(result);
+
+        return sorted;
+      },
+      {}
+    );
   }
 
   // Convert data to usable format {x:Date, H: highest-point, c: seconeHighest, o: secondLowest, l: lowest }
-
   private getData(): {
     o: number;
     h: number;
@@ -145,22 +151,22 @@ export class FinChartComponent implements OnInit, OnChanges {
       };
 
       // Go through the requirements again and see what is wrong. TODO
-      obj.x= layoutnames.indexOf(key)+1;
+      obj.x = layoutnames.indexOf(key) + 1;
 
       // the maximum planned iterations, => H
-      // We need to find the highest number of iterations planned. (iterations_max)
+      // The highest number of iterations planned. (iterations_max)
       obj.h = Math.max(...sorted[key].map((el) => el.iterations_max));
 
       // minimum planned iterations, => L
-      // We need to find the lowest number of iterations planned. (iterations_max)
+      // The lowest number of iterations planned. 1
       obj.l = 1;
 
       // maximum completed iterations, => C
-      // We need to find the highest number of iterations planned. (iterations_used)
+      // The highest number of iterations planned. (iterations_used)
       obj.c = Math.max(...sorted[key].map((el) => el.iterations_used));
 
       // and minimum completed iterations. => O
-      // We need to find the highestlowest number of iterations planned. (iterations_used)
+      // The highestlowest number of iterations planned. (iterations_used)
       obj.o = Math.min(...sorted[key].map((el) => el.iterations_used));
 
       output.push(obj);

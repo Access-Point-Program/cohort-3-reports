@@ -39,6 +39,8 @@ describe('TableComponent', () => {
   });
 
   it('should render a table', () => {
+    const table = fixture.debugElement.query(By.css(".table"));
+
     expect(table).toBeTruthy();
   });
 
