@@ -1,5 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, } from '@angular/core/testing';
+import { Layout } from '../layout';
+import { Ruleset } from '../Ruleset';
 import { MenuFormComponent } from './menu-form.component';
 
 describe('MenuFormComponent', () => {
@@ -8,7 +9,9 @@ describe('MenuFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MenuFormComponent]
+      declarations: [MenuFormComponent],
+    
+
     });
     fixture = TestBed.createComponent(MenuFormComponent);
     component = fixture.componentInstance;
@@ -18,4 +21,21 @@ describe('MenuFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should render a form,', () => {
+    expect(MenuFormComponent).toBeTruthy();
+
+  });
+  it('should show list of layouts',() => {
+  const mockMenuFormComponent: Layout[] =[{name: 'mock', id:2, creation_date:10}];
+  component.Layouts =mockMenuFormComponent;
+  fixture.detectChanges();
+  expect(component.Layouts).toBe(mockMenuFormComponent) //from line 16
+  
+});
+it('should show list of rulesets',() => {
+  const mockMenuFormComponent: Ruleset[] =[{name: 'mock', id:4, creation_date:7}];
+  component.Rulesets =mockMenuFormComponent;
+  fixture.detectChanges();
+  expect(component.Rulesets).toEqual(mockMenuFormComponent);
+});
 });

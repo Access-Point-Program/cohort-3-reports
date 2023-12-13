@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "mock:rulesets": "mocker ./mocker-app/api.js --host localhost --port 9004"
+    "mock:rulesets": "mocker ./mocker-app/api.js --host localhost --port 9010"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +45,7 @@
     "@types/file-saver": "^2.0.7",
     "@types/jasmine": "~4.3.0",
     "chartjs": "^0.3.24",
+    "jasmine": "^5.1.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

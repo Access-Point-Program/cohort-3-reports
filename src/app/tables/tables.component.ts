@@ -27,6 +27,7 @@ export class TableComponent implements OnChanges {
 
 	// Update on changes to @Input
 	ngOnChanges(_changes: SimpleChanges){
+    // if it detects changes update the same thing to make sure everything works
 		this.sims = this.RESULTS.sort((a:Results, b:Results) => new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime());
 		this.collectionSize = this.RESULTS.length;
 		this.refreshResults();
