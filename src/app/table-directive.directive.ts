@@ -5,6 +5,7 @@ import { Results } from './Results';
 export type SortColumn = keyof Results | '';
 export type SortDirection = 'asc' | 'desc' | '';
 
+
 // Quick function to rotate what order to set
 const rotate: { [key: string]: SortDirection } = {
   asc: 'desc',
