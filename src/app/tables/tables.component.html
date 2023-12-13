@@ -3,7 +3,11 @@ style="max-height: 1000px; width: auto">
 	<p class="text-muted d-flex justify-content-between">Simulation Results <app-exporter [Simulations]="RESULTS" [Rulesets]="Rulesets" /></p>
 	<hr class="text-muted">
 
-	<table class="table table-striped ">
+	<div class="p-2" *ngIf="RESULTS.length === 0">	
+		No Simulations Found!
+	</div>
+	 
+	<table class="table table-striped " *ngIf="RESULTS.length !== 0">
 		<thead>
 			<tr>
 				<th scope="col" sortable="layout" (sort)="onSort($event); page=1;">Layout</th>
