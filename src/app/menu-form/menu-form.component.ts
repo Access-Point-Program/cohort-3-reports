@@ -31,13 +31,10 @@ export class MenuFormComponent implements OnChanges {
 
 
   ngOnChanges(_changes: SimpleChanges) {//default
-    this.Layouts= this.Layouts.sort((a:Layout, b:Layout) => b.creation_date - a.creation_date); 
-    this.Rulesets= this.Rulesets.sort((a:Ruleset, b:Ruleset) => b.creation_date - a.creation_date); //most recent one is at the top
+    this.Layouts= this.Layouts.sort((a:Layout, b:Layout) => new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime()); 
+    this.Rulesets= this.Rulesets.sort((a:Ruleset, b:Ruleset) => new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime());  //most recent one is at the top
     
    }
-
-
-  ngOnChanges(_changes: SimpleChanges) {}
 
   selectRuleset(one: Ruleset | undefined = undefined) {
     this.rulesetSelection = one;
