@@ -27,30 +27,24 @@ export class FinChartComponent implements OnInit, OnChanges {
   // Unfiltered data
   @Input() Simulations: Results[] = [];
 
-  // Filtered data ready to use
-  private data: { o: number; h: number; c: number; l: number; x: number }[] =
-    [];
-
   private dictionaryOfThings: Record<string, Results[]> = {};
 
   // Update on changes to Input()
   ngOnChanges(_changes: SimpleChanges): void {
     this.dictionaryOfThings = this.screams();
-    this.data = this.getData();
     this.update();
   }
 
   // onInit
   ngOnInit(): void {
     this.dictionaryOfThings = this.screams();
-    this.data = this.getData();
     this.update();
   }
 
   public financialChartData: ChartConfiguration['data'] = {
     datasets: [
       {
-        data: this.data, // Our data goes here
+        data: this.getData(), // Our data goes here
       },
     ],
   };
@@ -64,7 +58,7 @@ export class FinChartComponent implements OnInit, OnChanges {
     scales: {
       x: {
         ticks: {
-          callback: (value, index, ticks) => {
+          callback: (_value, index) => {
             const layoutnames = Object.keys(this.dictionaryOfThings).sort();
             return layoutnames[Number(index)];
           },
@@ -106,7 +100,7 @@ export class FinChartComponent implements OnInit, OnChanges {
     this.financialChartData = {
       datasets: [
         {
-          data: this.data,
+          data: this.getData(),
         },
       ],
     };

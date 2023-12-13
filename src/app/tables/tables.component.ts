@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { Results } from '../Results';
 import { SortEvent, TableDirectiveDirective } from '../table-directive.directive';
+import { Ruleset } from '../Ruleset';
 
 const compare = (v1: string | number | boolean, v2: string | number | boolean) => (v1 < v2 ? -1 : v1 > v2 ? 1 : 0);
 
@@ -13,6 +14,7 @@ export class TableComponent implements OnChanges {
 	@ViewChildren(TableDirectiveDirective) headers!: QueryList<TableDirectiveDirective>;
 
 	@Input() RESULTS: Results[] = [];
+	@Input() Rulesets: Ruleset[] = [];
 	
 	// For Pagination
 	page = 1;
@@ -25,8 +27,8 @@ export class TableComponent implements OnChanges {
 
 	// Update on changes to @Input
 	ngOnChanges(_changes: SimpleChanges){
-		// if it detects changes update the same thing to make sure everything works
-		this.sims = this.RESULTS.sort((a:Results, b:Results) => b.creation_date - a.creation_date);
+    // if it detects changes update the same thing to make sure everything works
+		this.sims = this.RESULTS.sort((a:Results, b:Results) => new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime());
 		this.collectionSize = this.RESULTS.length;
 		this.refreshResults();
 	}

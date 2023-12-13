@@ -20,6 +20,7 @@ import { FinChartComponent } from './fin-chart/fin-chart.component';
 import { TableDirectiveDirective } from './table-directive.directive';
 import { MyChartComponent } from './my-chart/my-chart.component';
 import { RadarChartComponent } from './radar-chart/radar-chart.component';
+import { ExporterComponent } from './exporter/exporter.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RadarChartComponent } from './radar-chart/radar-chart.component';
     TableDirectiveDirective,
     MyChartComponent,
     RadarChartComponent,
+    ExporterComponent,
   ],
   imports: [
     BrowserModule,

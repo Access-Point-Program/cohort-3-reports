@@ -1,4 +1,4 @@
-package com.example.demo;
+package API.demo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,12 +12,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-// import org.springframework.web.reactive.function.client.WebClient;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,9 +31,6 @@ public class LayoutsControllerTests {
 
 	@LocalServerPort
 	private Integer port;
-
-	// @Autowired
-	// private WebClient webClient;
 
 	@Before
 	public void beforeEach() throws IOException {

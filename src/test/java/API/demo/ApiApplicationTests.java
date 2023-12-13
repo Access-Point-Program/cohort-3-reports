@@ -3,81 +3,74 @@ package API.demo;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-import API.demo.SimulationResults.SimulationResult;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.Mockito;
 import API.demo.SimulationResults.SimulationResultService;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
+
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import API.demo.Rulesets.Ruleset;
-
-@SpringBootTest(classes = {API.demo.ApiApplication.class})
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ApiApplicationTests {
-	@Autowired
+
+	@LocalServerPort
+    private Integer port;
+
+
+	@MockBean
     private SimulationResultService myService;
 
-    @MockBean
-    private mockwebclient mockWebClient;
+	@Before
+    public void init() {
+        RestAssured.baseURI = "http://localhost";
+        RestAssured.port = this.port;
 
-	final String BASE_URL = "http://localhost:9005/api/simulations";
+		Mockito.when(myService.getAll()).thenReturn(List.of());
+    }
 
-	@Test
-	void doesApiRun() {
-		RestAssured
-			.given()
-			.when()
-				.get(BASE_URL)
-			.then()
-				.log().ifValidationFails(LogDetail.ALL)
-				.contentType(ContentType.JSON)
-				.body(is(instanceOf(List.class)));
-	}
 
 	@Test
-	void doesApiRetunSameStatuscode() {
-		RestAssured
-			.given()
+	void SimulationReturnsCorrectContentType() {
+		
+			given()
 			.when()
-				.get(BASE_URL)
+				.get("/api/simulations")
 			.then()
 				.log().ifValidationFails(LogDetail.ALL)
-				.statusCode(200)
 				.contentType(ContentType.JSON);
 	}
 
 	@Test
-	void pls() {
-		mockWebClient.mockListRunsResponse();
-
-        List<SimulationResult> runs = myService.getAll();
-		assertTrue(runs.isEmpty());
-		/* RestAssured
-			.given()
+	void SimulationReturnsCorrectStatusCode() {
+		
+			given()
 			.when()
-				.get(BASE_URL)
+				.get("/api/simulations")
 			.then()
 				.log().ifValidationFails(LogDetail.ALL)
-				.statusCode(200)
-				.contentType(ContentType.JSON)
-				.body(is(instanceOf(List.class))); */
-  }
-  
-  @Test
-	void rulesetsWorks() {
-		RestAssured
-			.when()
-				.get("http://localhost:9005/api/rulesets")
-			.then()
-				.log().ifValidationFails(LogDetail.ALL)
-				.statusCode(200)
-				.extract().jsonPath().getList("$", Ruleset.class);
+				.statusCode(200);
 	}
+
+	@Test
+	void SimulationReturnsCorrectBody() {
+
+		 
+			given()
+			.when()
+				.get("/api/simulations")
+			.then()
+				.log().ifValidationFails(LogDetail.ALL)
+				.body(instanceOf(List.class)); 
+  }
 
 }

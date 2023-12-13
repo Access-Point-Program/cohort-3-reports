@@ -22,5 +22,4 @@ public class RulesetController {
         List<Ruleset> output = rulesetService.getAllRulesets();
         return ResponseEntity.ok().body(output);
     }
-
 }

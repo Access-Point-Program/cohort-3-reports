@@ -11,11 +11,11 @@ public class RulesetService {
     
 
     private final WebClient webclient = WebClient.create(); 
-    private final String url = "http://localhost:9010/rulesets";
+    private final String url = "http://localhost:9004/ruleset-extended";
 
 
     // Return a list of Rulesets That is of all the rulesets in the database
-    List<Ruleset> getAllRulesets(){
+    public List<Ruleset> getAllRulesets(){
         List<Ruleset> output = webclient.get()
             .uri(url)
             .retrieve()
