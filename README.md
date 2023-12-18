@@ -5,10 +5,10 @@
  Steps to Get CNN6 Reports Page running on a Windows Machine
 
 ### Preparations
-* Press "Start" and search for Environmental Variables
-* Select the "Edit the System Envirounmental Variables" options.
+* Press Windows key and search for "Environmental Variables"
+* Select the "Edit the System Envirounmental Variables" option.
 * Click on the "Environmental Variables" option on bottom right.
-* You should see two selection boxes, Under the bottom one, click on the "New" button and add the following variables:
+* You should see two selection boxes, under the second box, click on the "New..." button and add the following variables:
   * name: ```rules_api_url```, value: ```http://localhost:9004```.
   * name: ```layouts_api_url```, value: ```http://localhost:9003```.
   * name: ```sims_api_url```, value: ```http://localhost:9010```.
@@ -18,9 +18,7 @@
 1. Clone the Repository: ```git clone <SSH/HTTP>```.
 2. Open the Repository in an IDE.
 3. Open Terminal.
-4. Run the command: ```bash 
-  spring-boot:build-image
-        ```.
+4. Run the command: ```mvn spring-boot:build-image```.
 5. Run the following command:
   ```bash
     docker run \
@@ -32,8 +30,8 @@
       --env sims_api_url \
       cohort-3-reports:latest
   ``` 
-6. Run ```docker stop reports``` to stop the container
 6. Open your browser and go to this [link](http://localhost:9005/) to access CNN6 Reports page
+7. To stop the container run ```docker stop reports```
 
 Enjoy analyzing your data with clarity and insight using the CNN6 Reports Page!
 
