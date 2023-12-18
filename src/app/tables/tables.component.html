@@ -31,7 +31,7 @@ style="max-height: 1000px; width: auto">
 		</tbody>
 	</table>
 
-	<div class="d-flex justify-content-between">
+	<div class="d-flex justify-content-between" *ngIf="RESULTS.length !== 0">
 		<ngb-pagination
 		  [collectionSize]="collectionSize"
 		  [(page)]="page"

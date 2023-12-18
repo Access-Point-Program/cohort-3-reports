@@ -1,52 +1,62 @@
 [
   {
     "id": 1,
-    "name": "Ruleset 1",
+    "name": "Quantum",
     "creation_date": "2023-12-12 15:07:19.356609"
   },
   {
     "id": 2,
-    "name": "Ruleset 2",
+    "name": "Stellar",
     "creation_date": "2023-11-28 17:38:37.174577"
   },
   {
     "id": 3,
-    "name": "Ruleset 3",
+    "name": "Cipher",
     "creation_date": "2023-12-06 22:08:49.290427"
   },
   {
     "id": 4,
-    "name": "Ruleset 4",
+    "name": "Nexus",
     "creation_date": "2023-12-11 05:01:05.969093"
   },
   {
     "id": 5,
-    "name": "Ruleset 5",
+    "name": "Harmony",
     "creation_date": "2023-12-07 00:39:22.241171"
   },
   {
     "id": 6,
-    "name": "Ruleset 6",
+    "name": "Zenith",
     "creation_date": "2023-12-06 10:16:11.943105"
   },
   {
     "id": 7,
-    "name": "Ruleset 7",
+    "name": "Nova",
     "creation_date": "2023-12-07 03:49:30.699612"
   },
   {
     "id": 8,
-    "name": "Ruleset 8",
+    "name": "Spectrum",
     "creation_date": "2023-12-09 10:10:03.319708"
   },
   {
     "id": 9,
-    "name": "Ruleset 9",
+    "name": "Luminary",
     "creation_date": "2023-11-28 21:23:39.869866"
   },
   {
     "id": 10,
-    "name": "Ruleset 10",
+    "name": "Equinox",
     "creation_date": "2023-11-28 20:07:43.661105"
+  },
+  {
+    "id": 11,
+    "name": "Timmy",
+    "creation_date": "2023-12-15T22:20:07.848651+00:00"
+  },
+  {
+    "id": 12,
+    "name": "Timmy Ruleset",
+    "creation_date": "2023-12-15T20:54:59.759+00:00"
   }
 ]

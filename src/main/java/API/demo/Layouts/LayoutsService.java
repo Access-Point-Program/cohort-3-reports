@@ -5,20 +5,26 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import API.demo.config.AccessPointProperties;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class LayoutsService {
     
     @Autowired
-    private WebClient webClient;
+    private final WebClient webClient;
+
+    
+    private final AccessPointProperties accessPointProperties;
 
     public List<Layout> getAllLayouts() {
         
 
         return this.webClient.get()
-                .uri("http://localhost:9004/layouts")
+                .uri(accessPointProperties.getLayoutsApiUrl()+ "/layouts")
                 .retrieve()
                 .bodyToFlux(new ParameterizedTypeReference<Layout>() {})
                 .toStream().toList();

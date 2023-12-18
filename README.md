@@ -1,14 +1,37 @@
-# Cohort-3-Reports Installation
-Steps to Get CNN6 Reports Page running on a Windows Machine
+# Cohort-3-Reports 
+
+## Installation
+
+ Steps to Get CNN6 Reports Page running on a Windows Machine
+
+### Preparations
+* Press Windows key and search for "Environmental Variables"
+* Select the "Edit the System Envirounmental Variables" option.
+* Click on the "Environmental Variables" option on bottom right.
+* You should see two selection boxes, under the second box, click on the "New..." button and add the following variables:
+  * name: ```rules_api_url```, value: ```http://localhost:9004```.
+  * name: ```layouts_api_url```, value: ```http://localhost:9003```.
+  * name: ```sims_api_url```, value: ```http://localhost:9010```.
+
+### Setup
 
 1. Clone the Repository: ```git clone <SSH/HTTP>```.
 2. Open the Repository in an IDE.
 3. Open Terminal.
-4. Install dependencies: ```npm i``` and ```npm i @angular/cli```
-5. Generate Resources: ```./mvnw generate-resources```
-5. Start the Api: ```ApiApplication.java``` from your IDE. 
+4. Run the command: ```mvn spring-boot:build-image```.
+5. Run the following command:
+  ```bash
+    docker run \
+      -p 9005:9005 \
+      -d \
+      --name=reports \
+      --env rules_api_url \
+      --env layouts_api_url \
+      --env sims_api_url \
+      cohort-3-reports:latest
+  ``` 
 6. Open your browser and go to this [link](http://localhost:9005/) to access CNN6 Reports page
-7. (Optional) If you want to see our beautiful charts, Run: ```npm run mock:rulesets``` in a new terminal to see the charts come to life. 
+7. To stop the container run ```docker stop reports```
 
 Enjoy analyzing your data with clarity and insight using the CNN6 Reports Page!
 

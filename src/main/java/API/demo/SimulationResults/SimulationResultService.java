@@ -1,11 +1,13 @@
 package API.demo.SimulationResults;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import API.demo.Layouts.Layout;
 import API.demo.Rulesets.Ruleset;
+import API.demo.config.AccessPointProperties;
 
 import java.util.List;
 
@@ -14,15 +16,15 @@ import java.util.List;
 public class SimulationResultService {
 
   private final WebClient webClient = WebClient.create();
-  private final String resultsUrl = "http://localhost:9010/results";
-  private final String rulesetUrl = "http://localhost:9004/ruleset";
-  private final String layoutsUrl = "http://localhost:9004/layouts";
+  
+  @Autowired
+  private AccessPointProperties accessPointProperties;
 
   // Return a list of Simulation results That is of all the Results in the database
   public List<SimulationResult> getAll() {
 
     List<SimulationResult> results = webClient.get()
-        .uri(this.resultsUrl)
+        .uri(accessPointProperties.getSimsApiUrl()+"/results")
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<SimulationResult>() {
         })
@@ -33,7 +35,7 @@ public class SimulationResultService {
 
   public List<SimulationResult> getByRulesetAndLayout(Integer ruleset, Integer layout) {
     List<SimulationResult> results = webClient.get()
-        .uri(this.resultsUrl)
+        .uri(accessPointProperties.getSimsApiUrl()+"/results")
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<SimulationResult>() {
         })
@@ -44,7 +46,7 @@ public class SimulationResultService {
 
   public List<SimulationResult> getByRuleset(Integer ruleset) {
     List<SimulationResult> results = webClient.get()
-        .uri(this.resultsUrl)
+        .uri(accessPointProperties.getSimsApiUrl()+"/results")
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<SimulationResult>() {
         })
@@ -55,7 +57,7 @@ public class SimulationResultService {
 
   public List<SimulationResult> getByLayout(Integer layout) {
     List<SimulationResult> results = webClient.get()
-        .uri(this.resultsUrl)
+        .uri(accessPointProperties.getSimsApiUrl()+"/results")
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<SimulationResult>() {
         })
@@ -69,14 +71,14 @@ public class SimulationResultService {
   private List<SimulationResult> setupSimulations(List<SimulationResult> simulations) {
     
     List<Ruleset> rulesets = webClient.get()
-        .uri(rulesetUrl)
+        .uri(accessPointProperties.getRulesApiUrl()+"/ruleset")
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<Ruleset>() {
         })
         .toStream().toList();
 
     List<Layout> layouts = webClient.get()
-        .uri(layoutsUrl)
+        .uri(accessPointProperties.getRulesApiUrl()+"/layouts")
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<Layout>() {
         })
