@@ -29,13 +29,7 @@ export class ExporterComponent implements OnInit, OnChanges {
   ngOnChanges(_changes: SimpleChanges): void {
     this.constructD = this.updateDate(this.Simulations);
 
-    //Change Rulesets so it can only have unique rulesets
-    const g = this.Simulations.reduce<any[]>((acc, obj) => {
-      if (!acc.find((el) => el.name === obj.ruleset)) {
-        return [...acc, this.Rulesets.find((el) => el.name === obj.ruleset)]
-      }
-      return acc;
-    }, []);
+    const g = Array.from(new Set(this.Simulations.map((obj) => this.Rulesets.find((el) => el.name === obj.ruleset))));
 
     this.constructR = this.updateDate(g);
   }
@@ -74,7 +68,7 @@ export class ExporterComponent implements OnInit, OnChanges {
     // Titles
     ws[XLSX.utils.encode_cell({c: tb.s.c, r: 0})] = { v: 'Ruleset'};
     ws[XLSX.utils.encode_cell({c: tb.s.c+1, r: 0})] = { v: 'Rule(s)'};
-    ws[XLSX.utils.encode_cell({c: tb.s.c+2, r: 0})] = { v: 'Conditions'};
+    ws[XLSX.utils.encode_cell({c: tb.s.c+2, r: 0})] = { v: 'Total Conditions'};
 
     // For loop to go through all rulesets
     let lp = tb.s.r+1;

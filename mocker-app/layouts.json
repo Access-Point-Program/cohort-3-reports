@@ -1,62 +1,52 @@
 [
   {
     "id": 1,
-    "name": "Mock Layout 1",
-    "creator": "Cyclones",
+    "name": "Rectangle",
     "creation_date": "2023-12-12 15:07:19.356609"
   },
   {
     "id": 2,
-    "name": "Mock Layout 2",
-    "creator": "Cyclones",
+    "name": "Square",
     "creation_date": "2023-12-11 15:07:19.356609"
   },
   {
     "id": 3,
-    "name": "Mock Layout 3",
-    "creator": "Cyclones",
+    "name": "Circle",
     "creation_date": "2023-12-10 15:07:19.356609"
   },
   {
     "id": 4,
-    "name": "Mock Layout 4",
-    "creator": "Cyclones",
+    "name": "Pentagon",
     "creation_date": "2023-12-09 15:07:19.356609"
   },
   {
     "id": 5,
-    "name": "Mock Layout 5",
-    "creator": "Cyclones",
+    "name": "Hexagon",
     "creation_date": "2023-12-08 15:07:19.356609"
   },
   {
     "id": 6,
-    "name": "Mock Layout 6",
-    "creator": "Cyclones",
+    "name": "Octagon",
     "creation_date": "2023-12-07 15:07:19.356609"
   },
   {
     "id": 7,
-    "name": "Mock Layout 7",
-    "creator": "Cyclones",
+    "name": "Parralelogram",
     "creation_date": "2023-12-06 15:07:19.356609"
   },
   {
     "id": 8,
-    "name": "Mock Layout 8",
-    "creator": "Cyclones",
+    "name": "Trapaziod",
     "creation_date": "2023-12-05 15:07:19.356609"
   },
   {
     "id": 9,
-    "name": "Mock Layout 9",
-    "creator": "Cyclones",
+    "name": "Triangle",
     "creation_date": "2023-12-04 15:07:19.356609"
   },
   {
     "id": 10,
-    "name": "Mock Layout 10",
-    "creator": "Cyclones",
+    "name": "Heptagon",
     "creation_date": "2023-12-03 15:07:19.356609"
   }
 ]

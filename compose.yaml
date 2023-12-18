@@ -1,9 +1,60 @@
 services:
-  postgres:
-    image: 'postgres:latest'
+  # Prototype
+  authentication:
+    image: 'cohort-3-authentication:latest'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - auth_db_user=${auth_db_user}
+      - auth_db_pass=${auth_db_pass}
+      - auth_db_url=jdbc:postgresql://host.docker.internal:5432/capstone
     ports:
-      - '5432'
+      - '9001:9001'
+  
+  # breaking code
+  dashboard:
+    image: 'cohort-3-dashboard:latest'
+    environment:
+      - rules_api_url=http://localhost:9004
+      - layouts_api_url=http://localhost:9003
+    ports:
+      - '9030:9030'
+ 
+  # Java warriors
+  layouts:
+    image: 'cohort-3-layouts:latest'
+    environment:
+      - JavaWarriorsUser=${JavaWarriorsUser}
+      - JavaWarriors=${JavaWarriors}
+      - auth_db_url=jdbc:postgresql://host.docker.internal:5432/LayoutTeam
+    ports:
+      - '9003:9003'
+
+  # Cyclones
+  rules-engine:
+    image: 'cohort-3-rules-engine-admin:latest'
+    environment:
+      - rules_engine_username=${rules_engine_username}
+      - rules_engine_password=${rules_engine_password}
+      - rules_engine_url=jdbc:postgresql://host.docker.internal:5432/rules-engine
+    ports:
+      - '9004:9004'
+
+  # Hocus Pocus 
+  simulation-runner:
+    image: 'cohort-3-simulations:latest'
+    environment:
+      - simulations_username=${simulations_username}
+      - simulation_password=${simulation_password}
+      - simulation_url=jdbc:postgresql://host.docker.internal:5432/simulationdb
+    ports:
+      - '9004:9004'
+  
+
+  # CNN6
+  reports:
+    image: 'cohort-3-reports:latest'
+    environment:
+      - rules_api_url=http://localhost:9004
+      - layouts_api_url=http://localhost:9003
+      - sims_api_url=http://localhost:9010
+    ports:
+      - '9005:9005'
