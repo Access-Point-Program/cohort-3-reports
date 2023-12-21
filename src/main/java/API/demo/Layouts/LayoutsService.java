@@ -27,7 +27,8 @@ public class LayoutsService {
                 .uri(accessPointProperties.getLayoutsApiUrl()+ "/layouts")
                 .retrieve()
                 .bodyToFlux(new ParameterizedTypeReference<Layout>() {})
-                .toStream().toList();
+                .toStream()
+                .toList();
     }
 }
    
