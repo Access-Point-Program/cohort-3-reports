@@ -78,7 +78,7 @@ public class SimulationResultService {
         .toStream().toList();
 
     List<Layout> layouts = webClient.get()
-        .uri(accessPointProperties.getRulesApiUrl()+"/layouts")
+        .uri(accessPointProperties.getLayoutsApiUrl()+"/layouts")
         .retrieve()
         .bodyToFlux(new ParameterizedTypeReference<Layout>() {
         })
@@ -88,12 +88,12 @@ public class SimulationResultService {
       el.setLayout(
           layouts.stream().filter((element) -> element.getId().equals(el.getLayout_id()))
               .findFirst()
-              .get()
+              .orElseThrow(() -> new EntityNotFoundException("layout"))
               .getName());
       el.setRuleset(
           rulesets.stream().filter((element) -> element.getId().equals(el.getRuleset_id()))
               .findFirst()
-              .get()
+              .orElseThrow(() -> new EntityNotFoundException("ruleset"))
               .getName());
     });
 
